@@ -31,6 +31,6 @@ public class PlayerInteraction : MonoBehaviour
     }
     public interface IInteractable
     {
-        void Interact();¨ //éste apartado va a objetos interactuables
+        void Interact();
     }
 }
