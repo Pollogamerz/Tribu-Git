@@ -17,38 +17,27 @@ public class PlayerController : MonoBehaviour
         {
             targetPosition = transform.position;
         }
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     void Update()
     {
-        if (isMobilePlatform)
-        {
-            HandleMobileControls();
-        }
-        else
-        {
-            HandlePCControls();
-        }
-
-        if (animator != null)
-        {
-            animator.SetFloat("Speed", Mathf.Abs(targetPosition.magnitude));
-        }
+        HandlePCControls();
     }
 
     void HandlePCControls()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
         transform.position += movement * speed * Time.deltaTime;
-        if (animator != null)
-        {
-            animator.SetFloat("Horizontal", moveHorizontal);
-            animator.SetFloat("Vertical", moveVertical);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
-        }
+        float totalSpeed = new Vector2(moveHorizontal, moveVertical).magnitude;
+        animator.SetFloat("Horizontal", moveHorizontal);
+        animator.SetFloat("Vertical", moveVertical);
+        animator.SetFloat("Speed", totalSpeed);
     }
 
     void HandleMobileControls()
