@@ -37,7 +37,16 @@ public class PlayerController : MonoBehaviour
         float totalSpeed = new Vector2(moveHorizontal, moveVertical).magnitude;
         animator.SetFloat("Horizontal", moveHorizontal);
         animator.SetFloat("Vertical", moveVertical);
-        animator.SetFloat("Speed", totalSpeed);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (moveHorizontal < 0)
+        {
+            transform.localScale = new Vector3(-4, 4, 4);
+        }
+        if (moveHorizontal > 0)
+        {
+            transform.localScale = new Vector3(4, 4, 4);
+        }
     }
 
     void HandleMobileControls()
