@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,406 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cerca_0
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 532
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24339bec916f86749b592ddfe7970309
+      internalID: -502832712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_1
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac6a273ed1b5d6240bfe86d7acb44e55
+      internalID: 1247419341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_2
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 349554539981230479df455ac09697ef
+      internalID: -1441829199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_3
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75e151a985eb01f499797010889df5f9
+      internalID: -1437391810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_4
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ec42ca0c672d649965289748b4915e
+      internalID: 986456571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_5
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da373845af0e154ca9318a87acf816e
+      internalID: 669665246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_6
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d0455335ce52e4990fec389b36cbc1
+      internalID: -1346019550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_7
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa8dd14f20bf2743a159182bee1922d
+      internalID: -315819117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_8
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0974df011d47bc94d8517343af197e96
+      internalID: -2045270918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_9
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11555f91a4adc5746b16503b9018c4f1
+      internalID: 776829168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_10
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6c68f6d07201a4680450638e113868
+      internalID: 115698262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_11
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796babbf25ec71f4393db9d19c25e37f
+      internalID: 1994561399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_12
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a70a75f861eab4bbf362120a33eb70
+      internalID: 953133140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_13
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0225bb132f5cb184189da9e142739d27
+      internalID: -1007517173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_14
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba59581e9db8d74a8e0bf87d025280f
+      internalID: -1815121939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_15
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f35c1be1740db4ab6fb82b8ed4ffec
+      internalID: -1473159935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_16
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 398
+        width: 15
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16504bfbe087a7e43af5f5f93ef86b91
+      internalID: 2004414775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_17
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 325
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b2a0221ec332f41a312e6fa36bdbc3
+      internalID: -109057708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cerca_18
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 322
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f00ed2180796284da5605acea12f8f2
+      internalID: 1033974963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +505,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cerca_0: -502832712
+      cerca_1: 1247419341
+      cerca_10: 115698262
+      cerca_11: 1994561399
+      cerca_12: 953133140
+      cerca_13: -1007517173
+      cerca_14: -1815121939
+      cerca_15: -1473159935
+      cerca_16: 2004414775
+      cerca_17: -109057708
+      cerca_18: 1033974963
+      cerca_2: -1441829199
+      cerca_3: -1437391810
+      cerca_4: 986456571
+      cerca_5: 669665246
+      cerca_6: -1346019550
+      cerca_7: -315819117
+      cerca_8: -2045270918
+      cerca_9: 776829168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
