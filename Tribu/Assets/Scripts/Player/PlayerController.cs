@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
 
         if (moveHorizontal < 0)
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         if (moveHorizontal > 0)
         {
-            transform.localScale = new Vector3(3, 3, 3);
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
