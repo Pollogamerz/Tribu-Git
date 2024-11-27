@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c46f434b8f0e49047aac13473e558ae4
+guid: fa6a05efb13bd2f45917fce35723cfb4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cerca_0
+      name: arboles_0
       rect:
         serializedVersion: 2
-        x: 759
-        y: 532
-        width: 15
-        height: 28
+        x: 237
+        y: 655
+        width: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24339bec916f86749b592ddfe7970309
-      internalID: -502832712
+      spriteID: c24e4732b8c0a3f4586f39310ac2f7ad
+      internalID: -539221674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_1
+      name: arboles_1
       rect:
         serializedVersion: 2
-        x: 421
-        y: 398
-        width: 15
-        height: 28
+        x: 397
+        y: 607
+        width: 58
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac6a273ed1b5d6240bfe86d7acb44e55
-      internalID: 1247419341
+      spriteID: 7ac63d6c49ca2c443ac3a7d62ed1fa43
+      internalID: 755578210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_2
+      name: arboles_2
       rect:
         serializedVersion: 2
-        x: 441
-        y: 398
-        width: 15
-        height: 28
+        x: 957
+        y: 402
+        width: 65
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 349554539981230479df455ac09697ef
-      internalID: -1441829199
+      spriteID: 842e7ebde0547f84ba3fc1eaa0f18c07
+      internalID: 408631435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_3
+      name: arboles_3
       rect:
         serializedVersion: 2
-        x: 461
-        y: 398
-        width: 15
-        height: 28
+        x: 237
+        y: 635
+        width: 14
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75e151a985eb01f499797010889df5f9
-      internalID: -1437391810
+      spriteID: e3cd04a359ae37348b92364f525c0802
+      internalID: 1098543046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_4
+      name: arboles_4
       rect:
         serializedVersion: 2
-        x: 481
-        y: 398
-        width: 15
-        height: 28
+        x: 508
+        y: 568
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29ec42ca0c672d649965289748b4915e
-      internalID: 986456571
+      spriteID: 6a63417c82c269f46b13b1fca33d56c0
+      internalID: 1193890786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_5
+      name: arboles_5
       rect:
         serializedVersion: 2
-        x: 501
-        y: 398
-        width: 15
-        height: 28
+        x: 1204
+        y: 502
+        width: 58
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0da373845af0e154ca9318a87acf816e
-      internalID: 669665246
+      spriteID: 3dfa5cff14959cc4893cbc106a88c325
+      internalID: 2136415368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_6
+      name: arboles_6
       rect:
         serializedVersion: 2
-        x: 521
-        y: 398
-        width: 15
-        height: 28
+        x: 498
+        y: 534
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95d0455335ce52e4990fec389b36cbc1
-      internalID: -1346019550
+      spriteID: a72500e8831e3924491a85264841f612
+      internalID: 550566554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_7
+      name: arboles_7
       rect:
         serializedVersion: 2
-        x: 541
-        y: 398
-        width: 15
-        height: 28
+        x: 526
+        y: 537
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aa8dd14f20bf2743a159182bee1922d
-      internalID: -315819117
+      spriteID: 4db9ba8e7887b94488c265ce21ae2903
+      internalID: -789110735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_8
+      name: arboles_8
       rect:
         serializedVersion: 2
-        x: 653
-        y: 398
-        width: 15
-        height: 28
+        x: 46
+        y: 520
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0974df011d47bc94d8517343af197e96
-      internalID: -2045270918
+      spriteID: 81f458f621f04594ea597b6635caa0b4
+      internalID: 795427407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_9
+      name: arboles_9
       rect:
         serializedVersion: 2
-        x: 673
-        y: 398
-        width: 15
-        height: 28
+        x: 1247
+        y: 440
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11555f91a4adc5746b16503b9018c4f1
-      internalID: 776829168
+      spriteID: 32d82c26a6f870f4cb84413dd078141f
+      internalID: 1162422652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_10
+      name: arboles_10
       rect:
         serializedVersion: 2
-        x: 693
-        y: 398
-        width: 15
-        height: 28
+        x: 1246
+        y: 421
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,146 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b6c68f6d07201a4680450638e113868
-      internalID: 115698262
+      spriteID: 32bc9d1de3588174d8e0e8d0384dcdae
+      internalID: 1267973003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_11
-      rect:
-        serializedVersion: 2
-        x: 713
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 796babbf25ec71f4393db9d19c25e37f
-      internalID: 1994561399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_12
-      rect:
-        serializedVersion: 2
-        x: 733
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48a70a75f861eab4bbf362120a33eb70
-      internalID: 953133140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_13
-      rect:
-        serializedVersion: 2
-        x: 753
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0225bb132f5cb184189da9e142739d27
-      internalID: -1007517173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_14
-      rect:
-        serializedVersion: 2
-        x: 773
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cba59581e9db8d74a8e0bf87d025280f
-      internalID: -1815121939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_15
-      rect:
-        serializedVersion: 2
-        x: 904
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18f35c1be1740db4ab6fb82b8ed4ffec
-      internalID: -1473159935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_16
-      rect:
-        serializedVersion: 2
-        x: 924
-        y: 398
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16504bfbe087a7e43af5f5f93ef86b91
-      internalID: 2004414775
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_17
+      name: arboles_11
       rect:
         serializedVersion: 2
         x: 89
-        y: 325
+        y: 322
         width: 23
-        height: 20
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8b2a0221ec332f41a312e6fa36bdbc3
-      internalID: -109057708
+      spriteID: 9ee7c37094d62da4380678e6182c6d43
+      internalID: 916844834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cerca_18
+      name: arboles_12
       rect:
         serializedVersion: 2
-        x: 106
-        y: 322
-        width: 6
-        height: 5
+        x: 392
+        y: 266
+        width: 93
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,8 +363,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f00ed2180796284da5605acea12f8f2
-      internalID: 1033974963
+      spriteID: 5131e0f260243f248bc576571e1dcdd4
+      internalID: -1151316202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_13
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 311
+        width: 58
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e14944cde8e9646b59907a468a2e5d
+      internalID: 1184652982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_14
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 297
+        width: 58
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0dc4c54897e9e241a5c006ed862e5b2
+      internalID: -708648305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_15
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 104
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61da040cd1829a41a5fc50ca17b15b8
+      internalID: -1743145279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_16
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 87
+        width: 58
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6477b5603d4acde4dbe5acf962ca531d
+      internalID: 1972125074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_17
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 88
+        width: 58
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647285ae9e17a864ab8eedc6654a02d1
+      internalID: 524809947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_18
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 131
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe06f54fac38594a873bf839e7958d3
+      internalID: 1044962223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_19
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 85
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a8e3b0772b7f3498d624f62ed86f38
+      internalID: -490726128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_20
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 84
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41e33238a44c38429c106bcb8b7d5cc
+      internalID: -1062746161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arboles_21
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 81
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f695f611ccf7b1f4a95072843b6d0401
+      internalID: 1748252630
       vertices: []
       indices: 
       edges: []
@@ -506,25 +569,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cerca_0: -502832712
-      cerca_1: 1247419341
-      cerca_10: 115698262
-      cerca_11: 1994561399
-      cerca_12: 953133140
-      cerca_13: -1007517173
-      cerca_14: -1815121939
-      cerca_15: -1473159935
-      cerca_16: 2004414775
-      cerca_17: -109057708
-      cerca_18: 1033974963
-      cerca_2: -1441829199
-      cerca_3: -1437391810
-      cerca_4: 986456571
-      cerca_5: 669665246
-      cerca_6: -1346019550
-      cerca_7: -315819117
-      cerca_8: -2045270918
-      cerca_9: 776829168
+      arboles_0: -539221674
+      arboles_1: 755578210
+      arboles_10: 1267973003
+      arboles_11: 916844834
+      arboles_12: -1151316202
+      arboles_13: 1184652982
+      arboles_14: -708648305
+      arboles_15: -1743145279
+      arboles_16: 1972125074
+      arboles_17: 524809947
+      arboles_18: 1044962223
+      arboles_19: -490726128
+      arboles_2: 408631435
+      arboles_20: -1062746161
+      arboles_21: 1748252630
+      arboles_3: 1098543046
+      arboles_4: 1193890786
+      arboles_5: 2136415368
+      arboles_6: 550566554
+      arboles_7: -789110735
+      arboles_8: 795427407
+      arboles_9: 1162422652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d52562fddba478047adb98468dbcd656
+guid: c46f434b8f0e49047aac13473e558ae4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: atlas (1)_0
+      name: cerca_0
       rect:
         serializedVersion: 2
-        x: 60
-        y: 1696
-        width: 192
-        height: 193
+        x: 759
+        y: 532
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2eac1d4d15bc781459503fd79806e48f
-      internalID: 933207419
+      spriteID: 24339bec916f86749b592ddfe7970309
+      internalID: -502832712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_1
+      name: cerca_1
       rect:
         serializedVersion: 2
-        x: 276
-        y: 1748
-        width: 98
-        height: 86
+        x: 421
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055789556fb8f7d459de460dc9bebb43
-      internalID: 1760929251
+      spriteID: ac6a273ed1b5d6240bfe86d7acb44e55
+      internalID: 1247419341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_2
+      name: cerca_2
       rect:
         serializedVersion: 2
-        x: 391
-        y: 1749
-        width: 96
-        height: 85
+        x: 441
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d2a9fbb4794238478132994389d74ce
-      internalID: 1566339753
+      spriteID: 349554539981230479df455ac09697ef
+      internalID: -1441829199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_3
+      name: cerca_3
       rect:
         serializedVersion: 2
-        x: 502
-        y: 1748
-        width: 97
-        height: 86
+        x: 461
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5add1032e79cf75449b6134f322b1e06
-      internalID: 1699688696
+      spriteID: 75e151a985eb01f499797010889df5f9
+      internalID: -1437391810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_4
+      name: cerca_4
       rect:
         serializedVersion: 2
-        x: 649
-        y: 1704
-        width: 173
-        height: 173
+        x: 481
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da09125ef53297b40b685cd61b7c4d30
-      internalID: -1867136153
+      spriteID: 29ec42ca0c672d649965289748b4915e
+      internalID: 986456571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_5
+      name: cerca_5
       rect:
         serializedVersion: 2
-        x: 846
-        y: 1704
-        width: 173
-        height: 173
+        x: 501
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65e2bb85d9fffea43b4529f0ffa96d85
-      internalID: -1033618373
+      spriteID: 0da373845af0e154ca9318a87acf816e
+      internalID: 669665246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_6
+      name: cerca_6
       rect:
         serializedVersion: 2
-        x: 1063
-        y: 1725
-        width: 120
-        height: 135
+        x: 521
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 924d8a3712692914a92765738b4e77ae
-      internalID: -1582932962
+      spriteID: 95d0455335ce52e4990fec389b36cbc1
+      internalID: -1346019550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_7
+      name: cerca_7
       rect:
         serializedVersion: 2
-        x: 1239
-        y: 1753
-        width: 98
-        height: 97
+        x: 541
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51685267c919dda44b151f7e144c1582
-      internalID: -907504328
+      spriteID: 8aa8dd14f20bf2743a159182bee1922d
+      internalID: -315819117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_8
+      name: cerca_8
       rect:
         serializedVersion: 2
-        x: 1388
-        y: 1745
-        width: 109
-        height: 110
+        x: 653
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f6c140614ebc44693a7a2f5175acea
-      internalID: -1062386014
+      spriteID: 0974df011d47bc94d8517343af197e96
+      internalID: -2045270918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_9
+      name: cerca_9
       rect:
         serializedVersion: 2
-        x: 1545
-        y: 1769
-        width: 45
-        height: 45
+        x: 673
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccf2848d898dd2340b9a15b35aec34a4
-      internalID: -992133423
+      spriteID: 11555f91a4adc5746b16503b9018c4f1
+      internalID: 776829168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_10
+      name: cerca_10
       rect:
         serializedVersion: 2
-        x: 45
-        y: 746
-        width: 1665
-        height: 912
+        x: 693
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 748c3beb227253c48a0cf0eef9b216ae
-      internalID: -1184635530
+      spriteID: 1b6c68f6d07201a4680450638e113868
+      internalID: 115698262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_11
+      name: cerca_11
       rect:
         serializedVersion: 2
-        x: 1821
-        y: 852
-        width: 1059
-        height: 803
+        x: 713
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e52e71b98053803468c50aeaf2ec3a41
-      internalID: -681896161
+      spriteID: 796babbf25ec71f4393db9d19c25e37f
+      internalID: 1994561399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_12
+      name: cerca_12
       rect:
         serializedVersion: 2
-        x: 80
-        y: 575
-        width: 356
-        height: 84
+        x: 733
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,20 +363,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a4e8fd0a59ca3943bd19c4f2e1f3982
-      internalID: 1550137956
+      spriteID: 48a70a75f861eab4bbf362120a33eb70
+      internalID: 953133140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_13
+      name: cerca_13
       rect:
         serializedVersion: 2
-        x: 452
-        y: 575
-        width: 358
-        height: 84
+        x: 753
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +384,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 389dfec03c921c245819507e0b29d3cc
-      internalID: -714811411
+      spriteID: 0225bb132f5cb184189da9e142739d27
+      internalID: -1007517173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_14
+      name: cerca_14
       rect:
         serializedVersion: 2
-        x: 832
-        y: 575
-        width: 358
-        height: 84
+        x: 773
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,20 +405,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c0528d67f15c6e4ebb2db8d5f7a16e6
-      internalID: 1563821103
+      spriteID: cba59581e9db8d74a8e0bf87d025280f
+      internalID: -1815121939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_15
+      name: cerca_15
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 575
-        width: 359
-        height: 84
+        x: 904
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,20 +426,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a90207f74b1a6994ea3726b256503820
-      internalID: 930616805
+      spriteID: 18f35c1be1740db4ab6fb82b8ed4ffec
+      internalID: -1473159935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_16
+      name: cerca_16
       rect:
         serializedVersion: 2
-        x: 1595
-        y: 575
-        width: 357
-        height: 84
+        x: 924
+        y: 398
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +447,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06a06e57326bf32499e5d66b6bf69838
-      internalID: -2088749488
+      spriteID: 16504bfbe087a7e43af5f5f93ef86b91
+      internalID: 2004414775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_17
+      name: cerca_17
       rect:
         serializedVersion: 2
-        x: 2033
-        y: 543
-        width: 634
-        height: 147
+        x: 89
+        y: 325
+        width: 23
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +468,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c89a99cfbdbab748b152852a53c95aa
-      internalID: -178938405
+      spriteID: a8b2a0221ec332f41a312e6fa36bdbc3
+      internalID: -109057708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas (1)_18
+      name: cerca_18
       rect:
         serializedVersion: 2
-        x: 2710
-        y: 543
-        width: 635
-        height: 147
+        x: 106
+        y: 322
+        width: 6
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,71 +489,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e637a35b74b197d47aed94cf821ddee7
-      internalID: 1076959578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas (1)_19
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 90
-        width: 1767
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e61eb60bd87af144c841f55b49a2db7a
-      internalID: 471597859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas (1)_20
-      rect:
-        serializedVersion: 2
-        x: 1922
-        y: 420
-        width: 771
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af0a46eb653a7cc40bcc686e98606600
-      internalID: 669746781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas (1)_21
-      rect:
-        serializedVersion: 2
-        x: 1922
-        y: 379
-        width: 771
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23b02e7e9a5901443a77a7debd8bdf41
-      internalID: -1659701937
+      spriteID: 4f00ed2180796284da5605acea12f8f2
+      internalID: 1033974963
       vertices: []
       indices: 
       edges: []
@@ -569,28 +506,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      atlas (1)_0: 933207419
-      atlas (1)_1: 1760929251
-      atlas (1)_10: -1184635530
-      atlas (1)_11: -681896161
-      atlas (1)_12: 1550137956
-      atlas (1)_13: -714811411
-      atlas (1)_14: 1563821103
-      atlas (1)_15: 930616805
-      atlas (1)_16: -2088749488
-      atlas (1)_17: -178938405
-      atlas (1)_18: 1076959578
-      atlas (1)_19: 471597859
-      atlas (1)_2: 1566339753
-      atlas (1)_20: 669746781
-      atlas (1)_21: -1659701937
-      atlas (1)_3: 1699688696
-      atlas (1)_4: -1867136153
-      atlas (1)_5: -1033618373
-      atlas (1)_6: -1582932962
-      atlas (1)_7: -907504328
-      atlas (1)_8: -1062386014
-      atlas (1)_9: -992133423
+      cerca_0: -502832712
+      cerca_1: 1247419341
+      cerca_10: 115698262
+      cerca_11: 1994561399
+      cerca_12: 953133140
+      cerca_13: -1007517173
+      cerca_14: -1815121939
+      cerca_15: -1473159935
+      cerca_16: 2004414775
+      cerca_17: -109057708
+      cerca_18: 1033974963
+      cerca_2: -1441829199
+      cerca_3: -1437391810
+      cerca_4: 986456571
+      cerca_5: 669665246
+      cerca_6: -1346019550
+      cerca_7: -315819117
+      cerca_8: -2045270918
+      cerca_9: 776829168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
