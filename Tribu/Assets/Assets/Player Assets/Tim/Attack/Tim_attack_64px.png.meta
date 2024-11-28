@@ -102,10 +102,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 127
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -118,36 +118,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tim_attack_64px_1
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 256
-        width: 127
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88af14618b31ea046ab814415b52a849
-      internalID: 993751947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Tim_attack_64px_2
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 127
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +142,12 @@ TextureImporter:
       name: Tim_attack_64px_3
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 192
-        width: 127
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,10 +165,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 127
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,57 +181,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tim_attack_64px_5
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 128
-        width: 127
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e6be7290d95d464bba1f5786966bf5f
-      internalID: -1425738157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tim_attack_64px_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 127
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e91430a8dce1faf418c47924c8484350
-      internalID: 1870077562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Tim_attack_64px_7
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 64
-        width: 127
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,43 +202,85 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tim_attack_64px_8
+      name: Tim_attack_64px_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 127
+        x: 128
+        y: 256
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db185b725f76201408e6b1f1c280b886
-      internalID: -1128146848
+      spriteID: cb4cc6b57186d434f93d6bb7fba2ec99
+      internalID: 993751947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tim_attack_64px_9
+      name: Tim_attack_64px_5
       rect:
         serializedVersion: 2
-        x: 127
-        y: 0
-        width: 127
+        x: 128
+        y: 128
+        width: 128
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ff346e5bcdb5744e8a38134be4f1c32
-      internalID: -1013786969
+      spriteID: 7e2411e8a77066f439569783c09c503e
+      internalID: -1425738157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tim_attack_64px_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c535ffc1335724081317faa37634c9
+      internalID: 1870077562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tim_attack_64px_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fae70b0c9795e54479d4165ceae535eb
+      internalID: -1128146848
       vertices: []
       indices: 
       edges: []
@@ -326,7 +305,6 @@ TextureImporter:
       Tim_attack_64px_6: 1870077562
       Tim_attack_64px_7: 1777390454
       Tim_attack_64px_8: -1128146848
-      Tim_attack_64px_9: -1013786969
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
