@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -41,6 +41,11 @@ public class PlayerAttack : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
+        yield return new WaitForSeconds(attackCooldown);
+        isAttacking = false;
+    }
+    public void DealDamageToEnemies()
+    {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -53,9 +58,8 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(attackCooldown);
-        isAttacking = false;
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
