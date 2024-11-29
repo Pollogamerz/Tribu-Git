@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI nameText;
     private Queue<string> sentences;
-    private bool isDialogueActive;
+    public bool isDialogueActive { get; private set; }
+
+    private PlayerController playerController;
+    private PlayerAttack playerAttack;
 
     void Start()
     {
         dialoguePanel.SetActive(false);
         sentences = new Queue<string>();
         isDialogueActive = false;
+        playerController = FindObjectOfType<PlayerController>(); 
+        playerAttack = FindObjectOfType<PlayerAttack>();
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -21,12 +28,26 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         sentences.Clear();
 
+        if (nameText != null)
+        {
+            nameText.text = dialogue.name;
+        }
+
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
         isDialogueActive = true;
+        if (playerController != null)
+        {
+            playerController.isInputEnabled = false;
+        }
+        if (playerAttack != null)
+        {
+            playerAttack.isInputEnabled = false;
+        }
+
         DisplayNextSentence();
     }
 
@@ -46,22 +67,26 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        isDialogueActive = false;
-        Debug.Log("Diálogo finalizado");
-    }
-
-    void Update()
-    {
-        if (isDialogueActive && Input.GetKeyDown(KeyCode.Space))
+        if (nameText != null)
         {
-            DisplayNextSentence();
+            nameText.text = "";
+        }
+        isDialogueActive = false;
+        if (playerController != null)
+        {
+            playerController.isInputEnabled = true;
+        }
+        if (playerAttack != null)
+        {
+            playerAttack.isInputEnabled = true;
         }
     }
 }
+
 [System.Serializable]
 public class Dialogue
-    {
-        public string name;
-        [TextArea(3, 10)]
-        public string[] sentences;
-    }
+{
+    public string name;
+    [TextArea(3, 10)]
+    public string[] sentences;
+}

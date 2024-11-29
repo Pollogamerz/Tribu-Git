@@ -27,7 +27,12 @@ public class NPCInteraction : MonoBehaviour
         {
             isPlayerInRange = true;
             interactionUI.SetActive(true);
+            if (!dialogueManager.isDialogueActive && dialogueManager.nameText != null)
+            {
+                dialogueManager.nameText.text = dialogue.name;
+            }
         }
+
         if (animator != null)
         {
             animator.SetBool("isTalking", true);
@@ -43,6 +48,7 @@ public class NPCInteraction : MonoBehaviour
             interactionUI.SetActive(false);
             dialogueManager.EndDialogue();
         }
+
         if (animator != null)
         {
             animator.SetBool("isTalking", false);
@@ -54,13 +60,15 @@ public class NPCInteraction : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            Interact();
+            if (dialogueManager.isDialogueActive)
+            {
+                dialogueManager.DisplayNextSentence();
+            }
+            else
+            {
+                interactionUI.SetActive(false);
+                dialogueManager.StartDialogue(dialogue);
+            }
         }
-    }
-
-    void Interact()
-    {
-        interactionUI.SetActive(false);
-        dialogueManager.StartDialogue(dialogue);
     }
 }

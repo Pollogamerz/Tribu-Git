@@ -17,9 +17,10 @@ public class PlayerAttack : MonoBehaviour
             animator = GetComponent<Animator>();
         }
     }
-
+    public bool isInputEnabled = true;
     void Update()
     {
+        if (!isInputEnabled) return;
         if (Input.GetMouseButtonDown(0))
         {
             PerformAttack();

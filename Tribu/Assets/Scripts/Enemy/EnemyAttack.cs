@@ -7,7 +7,6 @@ public class EnemyAttack : MonoBehaviour
     public float attackRange = 1.5f;
     public int damage = 10;
     public float attackCooldown = 1f;
-
     private bool isAttacking = false;
     private Transform player;
     private Animator animator;

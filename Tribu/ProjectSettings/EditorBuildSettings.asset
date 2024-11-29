@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FelipeScene.unity
+    guid: 50198030317ba9f4a8e70aabdd748ace
   m_configObjects: {}
