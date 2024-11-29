@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
 public class CameraFollow2D : MonoBehaviour
 {
@@ -11,19 +10,17 @@ public class CameraFollow2D : MonoBehaviour
 
     void Start()
     {
+        foreach (var player in FindObjectsOfType<PlayerController>())
+        {
+            target = player.transform;
+            break;
+        }
+
         if (target != null)
         {
             Vector3 initialPosition = target.position + offset;
             initialPosition.z = transform.position.z;
             transform.position = initialPosition;
-        }
-        foreach (var player in FindObjectsOfType<PlayerController>())
-        {
-            if (player.IsOwner)
-            {
-                target = player.transform;
-                break;
-            }
         }
     }
 

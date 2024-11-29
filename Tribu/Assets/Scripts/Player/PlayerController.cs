@@ -1,52 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     private Vector3 targetPosition;
     private bool isMobilePlatform;
     public Animator animator;
 
-    public GameObject cameraPrefab; // Prefab de la cámara para el jugador
+    public GameObject cameraPrefab;
 
-    public bool isInputEnabled = true; // Control de si el jugador puede moverse o no
-
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-
-        if (!IsOwner)
-        {
-            isInputEnabled = false;  // Desactivar movimiento si no es el propietario
-        }
-
-        // Si este jugador es el propietario, crear y asignar la cámara
-        if (IsOwner)
-        {
-            // Instanciar la cámara solo para el propietario
-            GameObject cameraInstance = Instantiate(cameraPrefab);
-            cameraInstance.GetComponent<Camera>().transform.SetParent(transform);
-            cameraInstance.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10); // Ajuste de la cámara
-
-            AudioListener audioListener = cameraInstance.GetComponent<AudioListener>();
-            if (audioListener != null)
-            {
-                audioListener.enabled = true; // Habilitar el audio listener solo en la cámara del propietario
-            }
-        }
-    }
+    public bool isInputEnabled = true;
 
     void Start()
     {
-        if (!IsOwner)
-        {
-            enabled = false; // Desactivar el script para clientes
-            return;
-        }
-
         isMobilePlatform = Application.isMobilePlatform;
 
         if (isMobilePlatform)
@@ -58,13 +26,19 @@ public class PlayerController : NetworkBehaviour
         {
             animator = GetComponent<Animator>();
         }
+        if (cameraPrefab != null && Camera.main == null)
+        {
+            GameObject cameraInstance = Instantiate(cameraPrefab);
+            cameraInstance.GetComponent<Camera>().transform.SetParent(transform);
+            cameraInstance.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
+        }
     }
 
     void Update()
     {
-        if (!IsOwner || !isInputEnabled) return;
+        if (!isInputEnabled) return;
 
-        HandlePCControls(); // Lógica de control de movimiento
+        HandlePCControls();
     }
 
     void HandlePCControls()
@@ -74,7 +48,6 @@ public class PlayerController : NetworkBehaviour
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
         transform.position += movement * speed * Time.deltaTime;
 
-        float totalSpeed = new Vector2(moveHorizontal, moveVertical).magnitude;
         animator.SetFloat("Horizontal", moveHorizontal);
         animator.SetFloat("Vertical", moveVertical);
         animator.SetFloat("Speed", movement.sqrMagnitude);
@@ -83,7 +56,7 @@ public class PlayerController : NetworkBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        if (moveHorizontal > 0)
+        else if (moveHorizontal > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
