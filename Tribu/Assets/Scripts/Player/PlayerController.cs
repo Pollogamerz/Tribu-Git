@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
-    public float speed = 5f;
+    [SerializeField] public float speed = 1f;
     private Vector3 targetPosition;
     private bool isMobilePlatform;
-    public Animator animator;
+    [SerializeField] public Animator animator;
+    [SerializeField] public GameObject cameraPrefab;
+    [SerializeField] public bool isInputEnabled = true;
 
-    public GameObject cameraPrefab;
-
-    public bool isInputEnabled = true;
+    NetworkVariable<int> playerscore = new NetworkVariable<int>();
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!isInputEnabled) return;
-
+        if (!IsOwner) return;
         HandlePCControls();
     }
 

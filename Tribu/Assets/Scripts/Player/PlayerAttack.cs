@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Animator animator;
-    public float attackCooldown = 0.5f;
-    public int damage = 10;
-    public float attackRange = 1f;
+    [SerializeField] public Animator animator;
+    [SerializeField] public float attackCooldown = 0.5f;
+    [SerializeField]public int damage = 10;
+    [SerializeField] public float attackRange = 1f;
     private bool isAttacking = false;
 
     void Start()
