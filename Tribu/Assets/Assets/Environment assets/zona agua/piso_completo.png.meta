@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33e4189b1b062d64a89923bfc969567c
+guid: 6644b61e7e18fb449920d13ece0f2329
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nubes_sprite_0
+      name: piso_completo_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 43
-        width: 2751
-        height: 298
+        y: 517
+        width: 2476
+        height: 1150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8edccb5c4878cb14390317c741c67c00
-      internalID: 77555351
+      spriteID: 749563d38a13b3c4898da61240d41153
+      internalID: -1697730745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_sprite_1
+      name: piso_completo_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5
-        width: 2751
-        height: 29
+        x: 2504
+        y: 772
+        width: 228
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29e3ee7e667a0e24f9310d0282f94944
-      internalID: -602624625
+      spriteID: 21769b49d7a279742982578107e70206
+      internalID: 447044245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piso_completo_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1641
+        height: 477
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd7548c4062b754b9f5247a0a69c1be
+      internalID: 1171222100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piso_completo_3
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 0
+        width: 635
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eeb08699c90e164b8ae3bfefd3203d8
+      internalID: 820472972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piso_completo_4
+      rect:
+        serializedVersion: 2
+        x: 2685
+        y: 467
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124afad32ba35d147a4888e4d3b16562
+      internalID: 635946137
       vertices: []
       indices: 
       edges: []
@@ -149,8 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nubes_sprite_0: 77555351
-      Nubes_sprite_1: -602624625
+      piso_completo_0: -1697730745
+      piso_completo_1: 447044245
+      piso_completo_2: 1171222100
+      piso_completo_3: 820472972
+      piso_completo_4: 635946137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

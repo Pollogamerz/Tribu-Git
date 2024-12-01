@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44da3b4d8bb1305418871cbbc0b09846
+guid: 5e6bfd14b40a078428e79e25cf4ac5df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nubes_assets_0
+      name: agua_assets_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 24
-        width: 143
-        height: 661
+        x: 49
+        y: 357
+        width: 72
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,250 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d3849ed7ff398c4aadc68686cbee890
-      internalID: -122663386
+      spriteID: a12c60b861a7cf743a9c338f2445389d
+      internalID: 1121820969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_1
+      name: agua_assets_1
       rect:
         serializedVersion: 2
-        x: 252
-        y: 544
-        width: 48
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c71127a541ac93479feb9b9833a2a3d
-      internalID: 1402880549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_2
-      rect:
-        serializedVersion: 2
-        x: 365
-        y: 416
-        width: 219
-        height: 269
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0362a4c73713d3c4bae2f9ba62523cec
-      internalID: -1229694790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_3
-      rect:
-        serializedVersion: 2
-        x: 595
-        y: 486
-        width: 145
-        height: 199
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92f3332a227ce274992eea63d8776c77
-      internalID: 1843864231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_4
-      rect:
-        serializedVersion: 2
-        x: 752
-        y: 475
-        width: 145
-        height: 209
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8f54979b6b16fa42b7c5f6132d104bb
-      internalID: 214655693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_5
-      rect:
-        serializedVersion: 2
-        x: 247
-        y: 509
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c500c16d00b22504fbc4db79498a23f2
-      internalID: 1364416307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_6
-      rect:
-        serializedVersion: 2
-        x: 252
-        y: 494
-        width: 51
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 401f95fe9032e964ba70bf486a7ddab1
-      internalID: 1838081324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_7
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 446
-        width: 38
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aca5df374d3d6d240a2f0f7bfe93c22e
-      internalID: -805096503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_8
-      rect:
-        serializedVersion: 2
-        x: 251
-        y: 389
-        width: 63
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad610ead4794683428f87008103cfe31
-      internalID: 1614603709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_9
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 334
-        width: 52
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4555060c0406844ea220690a4260f98
-      internalID: -502438804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_10
-      rect:
-        serializedVersion: 2
-        x: 383
-        y: 272
-        width: 80
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee78c461f771e484297f9b105036f733
-      internalID: -1187197154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_11
-      rect:
-        serializedVersion: 2
-        x: 481
-        y: 273
-        width: 57
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbfd5798e1ff7f740a1f5ac3a3e4a7b4
-      internalID: 1994704111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_12
-      rect:
-        serializedVersion: 2
-        x: 699
-        y: 273
-        width: 77
+        x: 155
+        y: 350
+        width: 69
         height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -363,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f7954c220fefc24ea00b7ef83a7d2ec
-      internalID: -1679325374
+      spriteID: f1a23ce51d1175f4abf6ce783d7c1d31
+      internalID: 1742808883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_13
+      name: agua_assets_2
       rect:
         serializedVersion: 2
-        x: 261
-        y: 280
-        width: 46
-        height: 26
+        x: 257
+        y: 350
+        width: 134
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12bdc2fcb30d6b1418ef06348b0a1779
-      internalID: 1424257067
+      spriteID: 0a98fed438ba2564aa1d4e46c4198e13
+      internalID: -189343419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_14
+      name: agua_assets_3
       rect:
         serializedVersion: 2
-        x: 566
-        y: 276
-        width: 94
-        height: 46
+        x: 422
+        y: 343
+        width: 74
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,20 +174,272 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f4399878f0acde45903b4460d183478
-      internalID: -24851666
+      spriteID: c034acb6b7bf794439d973d90674ef6c
+      internalID: 1020836584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_15
+      name: agua_assets_4
       rect:
         serializedVersion: 2
-        x: 265
-        y: 232
+        x: 39
+        y: 184
+        width: 69
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5835efd7d94ddf46842768e9b781038
+      internalID: 1297280111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_5
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 226
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddbc97a79c1438240b4cd3ce9ede414c
+      internalID: -1734660887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 229
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c347cd0c03d505a41b9faa6e625a5494
+      internalID: -443731905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 233
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f3457cff8d63742a3e363c2db15db4
+      internalID: -185167215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_8
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 235
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b95e04a3948a64a8447728ee07ade0
+      internalID: -1070092128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_9
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 198
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6e1d85a0471a0479b870cd06ba5dc6
+      internalID: -255463369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 16
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 137e341eb3d26e64dabc37f17ed03f02
+      internalID: -734389216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 17
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3ae579ae45b5746ae939a3fd80950e
+      internalID: 924019285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_12
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 15
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd20a2d7313271489dae0a9e2889e52
+      internalID: 1716989066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_13
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 16
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5864e78e794be04b8fc69dfe4defcc7
+      internalID: -400331655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_14
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 15
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d87cd489b1d42104ea72ea38d1b03169
+      internalID: 1340589641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_15
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 16
+        width: 42
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3a4b1674e6e104dae4b3567051c390
+      internalID: 2004476658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agua_assets_16
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 131
         width: 36
-        height: 15
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,20 +447,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00c293921b88eda42b25a75f28585ed8
-      internalID: -1815818111
+      spriteID: e33d03161a9eed245879cea7e91f3091
+      internalID: -2140567080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_16
+      name: agua_assets_17
       rect:
         serializedVersion: 2
-        x: 252
-        y: 178
-        width: 57
-        height: 21
+        x: 384
+        y: 69
+        width: 19
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +468,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49e7290023340d24db3f88eed72eb2ff
-      internalID: 1212475994
+      spriteID: fe37d0390a6cbfe4390bef0cd3312121
+      internalID: 334055577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_17
+      name: agua_assets_18
       rect:
         serializedVersion: 2
-        x: 254
-        y: 197
-        width: 15
-        height: 10
+        x: 401
+        y: 62
+        width: 9
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,103 +489,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 948c75669498ea44e947136a07033b0c
-      internalID: -1118246438
+      spriteID: d7932a8d6022213498bbe315eee90f4f
+      internalID: 1653004156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nubes_assets_18
+      name: agua_assets_19
       rect:
         serializedVersion: 2
-        x: 344
-        y: 92
-        width: 166
-        height: 127
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c632df313629afa4882680a33ace71fa
-      internalID: 1048812284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_19
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 127
-        width: 58
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd9008f0f1478034bb8db7884bc5145f
-      internalID: -349783921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_20
-      rect:
-        serializedVersion: 2
-        x: 548
-        y: 89
-        width: 99
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b61f54192de41f44aa77780d5fe1b957
-      internalID: 136038114
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_21
-      rect:
-        serializedVersion: 2
-        x: 694
+        x: 437
         y: 67
-        width: 122
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b6677f9bf2a8aa4fb6aad7f3b32a1f8
-      internalID: -522197333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_22
-      rect:
-        serializedVersion: 2
-        x: 370
-        y: 67
-        width: 116
+        width: 18
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -573,29 +510,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b21ae056ae773945a4c6930c2a12499
-      internalID: 742089631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Nubes_assets_23
-      rect:
-        serializedVersion: 2
-        x: 557
-        y: 68
-        width: 77
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44a76efc4625b8b49bbe6285590b3c47
-      internalID: 628826176
+      spriteID: a62bf7e402bec8048a41dcff4785023b
+      internalID: -1294035394
       vertices: []
       indices: 
       edges: []
@@ -611,30 +527,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nubes_assets_0: -122663386
-      Nubes_assets_1: 1402880549
-      Nubes_assets_10: -1187197154
-      Nubes_assets_11: 1994704111
-      Nubes_assets_12: -1679325374
-      Nubes_assets_13: 1424257067
-      Nubes_assets_14: -24851666
-      Nubes_assets_15: -1815818111
-      Nubes_assets_16: 1212475994
-      Nubes_assets_17: -1118246438
-      Nubes_assets_18: 1048812284
-      Nubes_assets_19: -349783921
-      Nubes_assets_2: -1229694790
-      Nubes_assets_20: 136038114
-      Nubes_assets_21: -522197333
-      Nubes_assets_22: 742089631
-      Nubes_assets_23: 628826176
-      Nubes_assets_3: 1843864231
-      Nubes_assets_4: 214655693
-      Nubes_assets_5: 1364416307
-      Nubes_assets_6: 1838081324
-      Nubes_assets_7: -805096503
-      Nubes_assets_8: 1614603709
-      Nubes_assets_9: -502438804
+      agua_assets_0: 1121820969
+      agua_assets_1: 1742808883
+      agua_assets_10: -734389216
+      agua_assets_11: 924019285
+      agua_assets_12: 1716989066
+      agua_assets_13: -400331655
+      agua_assets_14: 1340589641
+      agua_assets_15: 2004476658
+      agua_assets_16: -2140567080
+      agua_assets_17: 334055577
+      agua_assets_18: 1653004156
+      agua_assets_19: -1294035394
+      agua_assets_2: -189343419
+      agua_assets_3: 1020836584
+      agua_assets_4: 1297280111
+      agua_assets_5: -1734660887
+      agua_assets_6: -443731905
+      agua_assets_7: -185167215
+      agua_assets_8: -1070092128
+      agua_assets_9: -255463369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
