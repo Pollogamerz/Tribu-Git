@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -39,6 +40,10 @@ public class EnemyHealth : MonoBehaviour
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject, 1f);
+        if (NetworkManager.Singleton.IsServer)
+        {
+            Destroy(gameObject, 1f);
+        }
     }
+
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Globalization;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -10,9 +9,10 @@ public class PlayerController : NetworkBehaviour
     private bool isMobilePlatform;
     [SerializeField] public Animator animator;
     [SerializeField] public GameObject cameraPrefab;
-    [SerializeField] public bool isInputEnabled = true;
+    [SerializeField] private NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    NetworkVariable<int> playerscore = new NetworkVariable<int>();
+    private NetworkVariable<float> playerScaleX = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<Vector2> movementInput = new NetworkVariable<Vector2>(writePerm: NetworkVariableWritePermission.Owner);
 
     void Start()
     {
@@ -27,19 +27,22 @@ public class PlayerController : NetworkBehaviour
         {
             animator = GetComponent<Animator>();
         }
+
         if (cameraPrefab != null && Camera.main == null)
         {
             GameObject cameraInstance = Instantiate(cameraPrefab);
             cameraInstance.GetComponent<Camera>().transform.SetParent(transform);
             cameraInstance.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
         }
+        playerScaleX.OnValueChanged += UpdatePlayerScale;
     }
 
     void Update()
     {
-        if (!isInputEnabled) return;
-        if (!IsOwner) return;
+        if (!IsOwner || !isInputEnabled.Value) return;
+
         HandlePCControls();
+        UpdateServerMovement();
     }
 
     void HandlePCControls()
@@ -47,37 +50,42 @@ public class PlayerController : NetworkBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
-        transform.position += movement * speed * Time.deltaTime;
 
+        transform.position += movement * speed * Time.deltaTime;
         animator.SetFloat("Horizontal", moveHorizontal);
         animator.SetFloat("Vertical", moveVertical);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (moveHorizontal < 0)
+        if (moveHorizontal < 0 && transform.localScale.x > 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            playerScaleX.Value = -1;
         }
-        else if (moveHorizontal > 0)
+        else if (moveHorizontal > 0 && transform.localScale.x < 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            playerScaleX.Value = 1;
         }
     }
 
-    void HandleMobileControls()
+    void UpdateServerMovement()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0;
-        }
+        movementInput.Value = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-        if (animator != null)
-        {
-            Vector3 movement = targetPosition - transform.position;
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
-        }
+    void HandleRemotePlayerAnimations()
+    {
+        Vector2 remoteInput = movementInput.Value;
+
+        animator.SetFloat("Horizontal", remoteInput.x);
+        animator.SetFloat("Vertical", remoteInput.y);
+        animator.SetFloat("Speed", remoteInput.sqrMagnitude);
+    }
+
+    void UpdatePlayerScale(float oldScaleX, float newScaleX)
+    {
+        transform.localScale = new Vector3(newScaleX, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void SetInputEnabled(bool enabled)
+    {
+        isInputEnabled.Value = enabled;
     }
 }

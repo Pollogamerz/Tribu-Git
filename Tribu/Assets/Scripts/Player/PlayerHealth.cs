@@ -1,12 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : NetworkBehaviour
 {
     [SerializeField] public int maxHealth = 3;
-    [SerializeField] private int currentHealth;
+    private NetworkVariable<int> currentHealth = new NetworkVariable<int>(3, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+
     [SerializeField] public Image[] hearts;
     [SerializeField] public Sprite fullHeart;
     [SerializeField] public Sprite emptyHeart;
@@ -14,72 +15,98 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public float respawnDelay = 2f;
     [SerializeField] public Animator animator;
 
+    private Canvas healthCanvas;
+
     void Start()
     {
-        currentHealth = maxHealth;
-        UpdateHeartsUI();
+        if (IsOwner)
+        {
+            healthCanvas = GetComponentInChildren<Canvas>();
+            currentHealth.OnValueChanged += UpdateHeartsUI;
+            UpdateHeartsUI(currentHealth.Value, maxHealth);
+        }
+        else
+        {
+            GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        }
     }
 
-    public void TakeDamage(int damage)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (currentHealth <= 0) return;
+        if (!IsServer) return;
 
-        currentHealth -= damage;
-        if (currentHealth < 0)
+        if (other.CompareTag("Enemy"))
         {
-            currentHealth = 0;
+            TakeDamageServerRpc(1);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void TakeDamageServerRpc(int damage)
+    {
+        if (currentHealth.Value > 0)
+        {
+            currentHealth.Value -= damage;
+            TriggerHitAnimationClientRpc();
+        }
+
+        if (currentHealth.Value <= 0)
+        {
+            TriggerDieAnimationClientRpc();
+            StartCoroutine(Respawn()); 
+        }
+    }
+
+    [ClientRpc]
+    private void TriggerHitAnimationClientRpc()
+    {
         if (animator != null)
         {
             animator.SetTrigger("Hit");
         }
-
-        UpdateHeartsUI();
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
-    private void UpdateHeartsUI()
+    [ClientRpc]
+    private void TriggerDieAnimationClientRpc()
     {
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < currentHealth)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-        }
-    }
-
-    private void Die()
-    {
-        Debug.Log("Se murio Tim pipipi");
         if (animator != null)
         {
             animator.SetTrigger("Die");
         }
-        GetComponent<PlayerController>().enabled = false;
-        StartCoroutine(Respawn());
+    }
+
+    private void UpdateHeartsUI(int oldHealth, int newHealth)
+    {
+        if (!IsOwner) return;
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].sprite = (i < newHealth) ? fullHeart : emptyHeart;
+        }
     }
 
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(respawnDelay);
-        currentHealth = maxHealth;
-        UpdateHeartsUI();
-        transform.position = respawnPoint.position;
-        GetComponent<PlayerController>().enabled = true;
-        if (animator != null)
+
+        currentHealth.Value = maxHealth;
+        RespawnClientRpc(respawnPoint.position);
+    }
+
+    [ClientRpc]
+    private void RespawnClientRpc(Vector3 respawnPosition)
+    {
+        transform.position = respawnPosition;
+
+        if (IsOwner)
         {
-            animator.SetTrigger("Speed");
+            UpdateHeartsUI(0, currentHealth.Value);
         }
 
-        Debug.Log("Tim ha vuelto a la vida pipipi");
+        if (animator != null)
+        {
+            animator.ResetTrigger("Die");
+            animator.SetTrigger("Respawn");
+        }
     }
 }

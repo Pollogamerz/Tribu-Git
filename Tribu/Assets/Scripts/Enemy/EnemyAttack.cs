@@ -1,57 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : NetworkBehaviour
 {
     public float attackRange = 1.5f;
     public int damage = 10;
     public float attackCooldown = 1f;
-    private bool isAttacking = false;
-    private Transform player;
-    private Animator animator;
-    private PlayerHealth playerHealth;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        animator = GetComponent<Animator>();
-    }
+    private bool isAttacking = false;
+    private Transform targetPlayer;
 
     void Update()
     {
-        if (player != null && !isAttacking)
+        if (!IsServer) return;
+
+        if (targetPlayer != null && !isAttacking)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            float distanceToPlayer = Vector2.Distance(transform.position, targetPlayer.position);
 
             if (distanceToPlayer <= attackRange)
             {
                 StartCoroutine(PerformAttack());
             }
         }
+        else
+        {
+            DetectPlayers();
+        }
     }
 
     private IEnumerator PerformAttack()
     {
         isAttacking = true;
-        if (animator != null)
+
+        // Ejecuta animación de ataque
+        if (GetComponent<Animator>() != null)
         {
-            animator.SetTrigger("Attack");
+            GetComponent<Animator>().SetTrigger("Attack");
         }
+
         yield return new WaitForSeconds(attackCooldown);
+
+        DealDamageToPlayer();
+
         isAttacking = false;
     }
-    public void DealDamageToPlayer()
+
+    private void DealDamageToPlayer()
     {
-        if (player != null && Vector2.Distance(transform.position, player.position) <= attackRange)
+        if (targetPlayer != null && Vector2.Distance(transform.position, targetPlayer.position) <= attackRange)
         {
-            if (player.TryGetComponent(out playerHealth))
+            if (targetPlayer.TryGetComponent(out PlayerHealth playerHealth) && IsServer)
             {
-                playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamageServerRpc(damage);
             }
         }
     }
 
+    private void DetectPlayers()
+    {
+        float shortestDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
+
+        foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
+        {
+            GameObject playerObject = client.PlayerObject.gameObject;
+            float distance = Vector2.Distance(transform.position, playerObject.transform.position);
+
+            if (distance < attackRange && distance < shortestDistance)
+            {
+                shortestDistance = distance;
+                closestPlayer = playerObject.transform;
+            }
+        }
+
+        targetPlayer = closestPlayer;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

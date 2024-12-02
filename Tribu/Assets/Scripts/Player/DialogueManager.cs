@@ -41,26 +41,14 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
         if (playerController != null)
         {
-            playerController.isInputEnabled = false;
+            playerController.SetInputEnabled(false);
         }
         if (playerAttack != null)
         {
-            playerAttack.isInputEnabled = false;
+            playerAttack.SetInputEnabled(false);
         }
 
         DisplayNextSentence();
-    }
-
-    public void DisplayNextSentence()
-    {
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
     }
 
     public void EndDialogue()
@@ -74,13 +62,27 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         if (playerController != null)
         {
-            playerController.isInputEnabled = true;
+            playerController.SetInputEnabled(true);
         }
         if (playerAttack != null)
         {
-            playerAttack.isInputEnabled = true;
+            playerAttack.SetInputEnabled(true);
         }
     }
+
+
+    public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        dialogueText.text = sentence;
+    }
+
 }
 
 [System.Serializable]

@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : NetworkBehaviour
 {
     [SerializeField] public Animator animator;
     [SerializeField] public float attackCooldown = 0.5f;
-    [SerializeField]public int damage = 10;
+    [SerializeField] public int damage = 10;
     [SerializeField] public float attackRange = 1f;
     private bool isAttacking = false;
+    public NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     void Start()
     {
@@ -17,35 +18,49 @@ public class PlayerAttack : MonoBehaviour
             animator = GetComponent<Animator>();
         }
     }
-    public bool isInputEnabled = true;
+
     void Update()
     {
-        if (!isInputEnabled) return;
+        if (!IsOwner || !isInputEnabled.Value) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             PerformAttack();
         }
     }
 
+    public void SetInputEnabled(bool enabled)
+    {
+        isInputEnabled.Value = enabled;
+    }
+
     public void PerformAttack()
     {
         if (!isAttacking)
         {
-            StartCoroutine(HandleAttack());
+            isAttacking = true;
+            PerformAttackServerRpc();
+            StartCoroutine(ResetAttackCooldown());
         }
     }
 
-    private IEnumerator HandleAttack()
+    [ServerRpc]
+    private void PerformAttackServerRpc()
     {
-        isAttacking = true;
+        DealDamageToEnemies();
+        PerformAttackClientRpc();
+    }
+
+    [ClientRpc]
+    private void PerformAttackClientRpc()
+    {
         if (animator != null)
         {
             animator.SetTrigger("Attack");
         }
-        yield return new WaitForSeconds(attackCooldown);
-        isAttacking = false;
     }
-    public void DealDamageToEnemies()
+
+    private void DealDamageToEnemies()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
@@ -61,9 +76,9 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private IEnumerator ResetAttackCooldown()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        yield return new WaitForSeconds(attackCooldown);
+        isAttacking = false;
     }
 }

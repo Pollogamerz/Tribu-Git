@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : NetworkBehaviour
 {
     public float moveSpeed = 2f;
     public Transform[] patrolPoints;
     public float detectionRange = 5f;
 
-    private Transform player;
+    private Transform targetPlayer;
     private Animator animator;
     private int currentPatrolIndex = 0;
-    private bool isChasingPlayer = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        if (isChasingPlayer && player != null)
+        if (!IsServer) return;
+
+        if (targetPlayer != null)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            float distanceToPlayer = Vector2.Distance(transform.position, targetPlayer.position);
 
             if (distanceToPlayer <= detectionRange)
             {
@@ -31,13 +32,13 @@ public class EnemyBehavior : MonoBehaviour
             }
             else
             {
-                isChasingPlayer = false;
+                targetPlayer = null;
             }
         }
         else
         {
             Patrol();
-            DetectPlayer();
+            DetectPlayers();
         }
     }
 
@@ -47,30 +48,41 @@ public class EnemyBehavior : MonoBehaviour
 
         Transform patrolTarget = patrolPoints[currentPatrolIndex];
         MoveTowards(patrolTarget.position);
+
         if (Vector2.Distance(transform.position, patrolTarget.position) < 0.2f)
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
         }
     }
 
-    private void DetectPlayer()
+    private void DetectPlayers()
     {
-        if (player != null)
-        {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        float shortestDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
 
-            if (distanceToPlayer <= detectionRange)
+        foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
+        {
+            GameObject playerObject = client.PlayerObject.gameObject;
+            float distance = Vector2.Distance(transform.position, playerObject.transform.position);
+
+            if (distance < detectionRange && distance < shortestDistance)
             {
-                isChasingPlayer = true;
+                shortestDistance = distance;
+                closestPlayer = playerObject.transform;
             }
+        }
+
+        if (closestPlayer != null)
+        {
+            targetPlayer = closestPlayer;
         }
     }
 
     private void ChasePlayer()
     {
-        if (player != null)
+        if (targetPlayer != null)
         {
-            MoveTowards(player.position);
+            MoveTowards(targetPlayer.position);
         }
     }
 
@@ -78,12 +90,14 @@ public class EnemyBehavior : MonoBehaviour
     {
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
         if (animator != null)
         {
             animator.SetFloat("Horizontal", direction.x);
             animator.SetFloat("Vertical", direction.y);
             animator.SetFloat("Speed", direction.sqrMagnitude);
         }
+
         if (direction.x < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -93,7 +107,6 @@ public class EnemyBehavior : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
