@@ -14,6 +14,15 @@ public class PlayerController : NetworkBehaviour
     private NetworkVariable<float> playerScaleX = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<Vector2> movementInput = new NetworkVariable<Vector2>(writePerm: NetworkVariableWritePermission.Owner);
 
+    private PlayerInputActions playerInput; // Instancia del esquema de entradas
+
+    void Awake()
+    {
+        // Inicializa el esquema de entrada
+        playerInput = new PlayerInputActions();
+        playerInput.Enable(); // Activa las entradas
+    }
+
     void Start()
     {
         isMobilePlatform = Application.isMobilePlatform;
@@ -47,19 +56,20 @@ public class PlayerController : NetworkBehaviour
 
     void HandlePCControls()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0f);
+        // Obtiene el movimiento desde el sistema de entrada
+        Vector2 input = playerInput.Player.Move.ReadValue<Vector2>();
+        Vector3 movement = new Vector3(input.x, input.y, 0f);
 
         transform.position += movement * speed * Time.deltaTime;
-        animator.SetFloat("Horizontal", moveHorizontal);
-        animator.SetFloat("Vertical", moveVertical);
+        animator.SetFloat("Horizontal", input.x);
+        animator.SetFloat("Vertical", input.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        if (moveHorizontal < 0 && transform.localScale.x > 0)
+
+        if (input.x < 0 && transform.localScale.x > 0)
         {
             playerScaleX.Value = -1;
         }
-        else if (moveHorizontal > 0 && transform.localScale.x < 0)
+        else if (input.x > 0 && transform.localScale.x < 0)
         {
             playerScaleX.Value = 1;
         }
@@ -67,7 +77,8 @@ public class PlayerController : NetworkBehaviour
 
     void UpdateServerMovement()
     {
-        movementInput.Value = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        // Actualiza la variable de red con el movimiento del cliente
+        movementInput.Value = playerInput.Player.Move.ReadValue<Vector2>();
     }
 
     void HandleRemotePlayerAnimations()

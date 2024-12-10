@@ -11,6 +11,23 @@ public class PlayerAttack : NetworkBehaviour
     private bool isAttacking = false;
     public NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    private PlayerInputActions playerInput;
+
+    void Awake()
+    {
+        playerInput = new PlayerInputActions();
+    }
+
+    void OnEnable()
+    {
+        playerInput.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerInput.Disable();
+    }
+
     void Start()
     {
         if (animator == null)
@@ -23,7 +40,8 @@ public class PlayerAttack : NetworkBehaviour
     {
         if (!IsOwner || !isInputEnabled.Value) return;
 
-        if (Input.GetMouseButtonDown(0))
+        // Detectar si se presionó el botón de ataque
+        if (playerInput.Player.Attack.WasPressedThisFrame())
         {
             PerformAttack();
         }
