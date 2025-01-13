@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : NetworkBehaviour
 {
     [SerializeField] public float speed = 1f;
-    private Vector3 targetPosition;
-    private bool isMobilePlatform;
+    private Vector3 targetPosition; // Posición objetivo del jugador
+    private bool isMoving = false;  // Indica si el jugador está en movimiento
     [SerializeField] public Animator animator;
     [SerializeField] public GameObject cameraPrefab;
     [SerializeField] private NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
     private NetworkVariable<Vector2> movementInput = new NetworkVariable<Vector2>(writePerm: NetworkVariableWritePermission.Owner);
 
     private PlayerInputActions playerInput; // Instancia del esquema de entradas
+    private bool isMobilePlatform;
 
     void Awake()
     {
@@ -25,7 +26,7 @@ public class PlayerController : NetworkBehaviour
 
     void Start()
     {
-        isMobilePlatform = Application.isMobilePlatform;
+        CheckPlatform();
 
         if (isMobilePlatform)
         {
@@ -43,6 +44,7 @@ public class PlayerController : NetworkBehaviour
             cameraInstance.GetComponent<Camera>().transform.SetParent(transform);
             cameraInstance.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
         }
+
         playerScaleX.OnValueChanged += UpdatePlayerScale;
     }
 
@@ -50,14 +52,80 @@ public class PlayerController : NetworkBehaviour
     {
         if (!IsOwner || !isInputEnabled.Value) return;
 
-        HandlePCControls();
+        if (isMobilePlatform)
+        {
+            HandleMobileTouch(); // Manejo de entrada táctil
+        }
+        else
+        {
+            HandlePCControls(); // Manejo de teclado para PC
+        }
+
+        MoveTowardsTarget(); // Movimiento hacia el objetivo (aplica en móvil)
         UpdateServerMovement();
+    }
+
+    void CheckPlatform()
+    {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            Debug.Log("Estás jugando en un navegador web.");
+        }
+        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            Debug.Log("Estás jugando en un dispositivo móvil.");
+        }
+        else
+        {
+            Debug.Log("Estás jugando en otra plataforma.");
+        }
     }
 
     void HandlePCControls()
     {
-        // Obtiene el movimiento desde el sistema de entrada
+        // Obtiene el movimiento desde el sistema de entrada para PC
         Vector2 input = playerInput.Player.Move.ReadValue<Vector2>();
+        ApplyMovement(input);
+    }
+
+    void HandleMobileTouch()
+    {
+        // Captura la posición del toque
+        Vector2 touchPosition = playerInput.Mobile.Move.ReadValue<Vector2>();
+
+        if (playerInput.Mobile.TouchPress.ReadValue<float>() > 0) // Verifica si se presionó la pantalla
+        {
+            // Convierte las coordenadas de la pantalla a coordenadas del mundo
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
+            targetPosition = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+            isMoving = true; // Marca que el jugador está en movimiento
+        }
+    }
+
+    void MoveTowardsTarget()
+    {
+        if (isMoving)
+        {
+            // Mueve al jugador hacia el objetivo
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+            // Calcula la dirección y actualiza las animaciones
+            Vector3 direction = targetPosition - transform.position;
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Vertical", direction.y);
+            animator.SetFloat("Speed", direction.sqrMagnitude);
+
+            // Detiene el movimiento cuando alcanza el objetivo
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                isMoving = false;
+                animator.SetFloat("Speed", 0f);
+            }
+        }
+    }
+
+    void ApplyMovement(Vector2 input)
+    {
         Vector3 movement = new Vector3(input.x, input.y, 0f);
 
         transform.position += movement * speed * Time.deltaTime;
@@ -78,16 +146,9 @@ public class PlayerController : NetworkBehaviour
     void UpdateServerMovement()
     {
         // Actualiza la variable de red con el movimiento del cliente
-        movementInput.Value = playerInput.Player.Move.ReadValue<Vector2>();
-    }
-
-    void HandleRemotePlayerAnimations()
-    {
-        Vector2 remoteInput = movementInput.Value;
-
-        animator.SetFloat("Horizontal", remoteInput.x);
-        animator.SetFloat("Vertical", remoteInput.y);
-        animator.SetFloat("Speed", remoteInput.sqrMagnitude);
+        movementInput.Value = isMobilePlatform
+            ? playerInput.Mobile.Move.ReadValue<Vector2>()
+            : playerInput.Player.Move.ReadValue<Vector2>();
     }
 
     void UpdatePlayerScale(float oldScaleX, float newScaleX)
