@@ -114,6 +114,54 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mobile"",
+            ""id"": ""7fff12fc-324b-44df-80b0-c944e75c44ee"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""c72a9981-c4c0-412d-b2f6-63b43de66712"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TouchPress"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a521aaa-231e-42ea-a4e9-c49e438343cc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4959007d-359b-47ab-9132-d6a749e45e0d"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa389cbb-d712-414b-abcd-440ef9549636"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,6 +170,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        // Mobile
+        m_Mobile = asset.FindActionMap("Mobile", throwIfNotFound: true);
+        m_Mobile_Move = m_Mobile.FindAction("Move", throwIfNotFound: true);
+        m_Mobile_TouchPress = m_Mobile.FindAction("TouchPress", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,9 +285,68 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Mobile
+    private readonly InputActionMap m_Mobile;
+    private List<IMobileActions> m_MobileActionsCallbackInterfaces = new List<IMobileActions>();
+    private readonly InputAction m_Mobile_Move;
+    private readonly InputAction m_Mobile_TouchPress;
+    public struct MobileActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public MobileActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Mobile_Move;
+        public InputAction @TouchPress => m_Wrapper.m_Mobile_TouchPress;
+        public InputActionMap Get() { return m_Wrapper.m_Mobile; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MobileActions set) { return set.Get(); }
+        public void AddCallbacks(IMobileActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MobileActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MobileActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @TouchPress.started += instance.OnTouchPress;
+            @TouchPress.performed += instance.OnTouchPress;
+            @TouchPress.canceled += instance.OnTouchPress;
+        }
+
+        private void UnregisterCallbacks(IMobileActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @TouchPress.started -= instance.OnTouchPress;
+            @TouchPress.performed -= instance.OnTouchPress;
+            @TouchPress.canceled -= instance.OnTouchPress;
+        }
+
+        public void RemoveCallbacks(IMobileActions instance)
+        {
+            if (m_Wrapper.m_MobileActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMobileActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MobileActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MobileActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MobileActions @Mobile => new MobileActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+    }
+    public interface IMobileActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
     }
 }
