@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class NPCInteraction : MonoBehaviour
 {
@@ -10,6 +8,10 @@ public class NPCInteraction : MonoBehaviour
     public Dialogue dialogue;
     private bool isPlayerInRange;
     public Animator animator;
+
+    [Header("Configuración del NPC")]
+    public bool activatesEvent;
+    public UnityEvent onDialogueEnd;
 
     void Start()
     {
@@ -67,8 +69,22 @@ public class NPCInteraction : MonoBehaviour
             else
             {
                 interactionUI.SetActive(false);
-                dialogueManager.StartDialogue(dialogue);
+                dialogueManager.StartDialogue(dialogue, this);
             }
+        }
+    }
+
+
+    public void OnDialogueEnd()
+    {
+        if (activatesEvent)
+        {
+            onDialogueEnd.Invoke();
+        }
+        if (activatesEvent)
+        {
+            Debug.Log("Evento activado por: " + gameObject.name);
+            onDialogueEnd.Invoke();
         }
     }
 }

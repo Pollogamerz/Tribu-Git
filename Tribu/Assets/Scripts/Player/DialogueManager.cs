@@ -23,7 +23,9 @@ public class DialogueManager : MonoBehaviour
         playerAttack = FindObjectOfType<PlayerAttack>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    private NPCInteraction currentNPC;
+
+    public void StartDialogue(Dialogue dialogue, NPCInteraction npc)
     {
         dialoguePanel.SetActive(true);
         sentences.Clear();
@@ -39,6 +41,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         isDialogueActive = true;
+
+        currentNPC = npc;
+
         if (playerController != null)
         {
             playerController.SetInputEnabled(false);
@@ -60,6 +65,7 @@ public class DialogueManager : MonoBehaviour
             nameText.text = "";
         }
         isDialogueActive = false;
+
         if (playerController != null)
         {
             playerController.SetInputEnabled(true);
@@ -68,7 +74,15 @@ public class DialogueManager : MonoBehaviour
         {
             playerAttack.SetInputEnabled(true);
         }
+        if (currentNPC != null)
+        {
+            currentNPC.OnDialogueEnd();
+            currentNPC = null;
+        }
     }
+
+
+
 
 
     public void DisplayNextSentence()

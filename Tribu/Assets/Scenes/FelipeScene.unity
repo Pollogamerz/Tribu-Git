@@ -4757,6 +4757,90 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!1 &405780764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405780765}
+  - component: {fileID: 405780766}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &405780765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405780764}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.031041808}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1084062494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &405780766
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405780764}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &433333654
 GameObject:
   m_ObjectHideFlags: 0
@@ -12170,6 +12254,10 @@ MonoBehaviour:
     - Creo que mi amigo lactobasilico te necesita
     - "Ve a la casa roja, ahi est\xE1"
   animator: {fileID: 1014119466}
+  activatesEvent: 0
+  onDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!70 &1014119468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -12694,6 +12782,38 @@ Transform:
   - {fileID: 596181999}
   - {fileID: 1312410024}
   m_Father: {fileID: 1291148553}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1084062493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084062494}
+  m_Layer: 0
+  m_Name: nivel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1084062494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084062493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.52, y: 0.94, z: 0.031041808}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 405780765}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097979497
 GameObject:
@@ -23008,6 +23128,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 962602408}
     - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: activatesEvent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 128507923}
@@ -23030,6 +23154,38 @@ PrefabInstance:
     - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
       value: Me dan miedo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1084062493}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756576903145969103, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
+      propertyPath: onDialogueEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8527896677970604457, guid: 6df8f3aa4a1b9244189de00b80500ab9, type: 3}
       propertyPath: m_Name
@@ -23311,3 +23467,4 @@ SceneRoots:
   - {fileID: 8891596421862268304}
   - {fileID: 1391033630}
   - {fileID: 1696438880835768053}
+  - {fileID: 1084062494}
