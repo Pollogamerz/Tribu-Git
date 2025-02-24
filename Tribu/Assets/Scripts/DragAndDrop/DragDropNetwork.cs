@@ -18,7 +18,7 @@ public class DragDropNetwork : NetworkBehaviour
         if (isDragging)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("Mouse Posición en el mundo: " + mousePosition);
+            //Debug.Log("Mouse Posición en el mundo: " + mousePosition);
             mousePosition.z = 0; // Asegurar que el objeto se mantenga en 2D
             transform.position = mousePosition;
         }
@@ -41,13 +41,13 @@ public class DragDropNetwork : NetworkBehaviour
 
         if (hit != null)
         {
-            Debug.Log("Clic en: " + hit.gameObject.name); // Para ver si detecta algo
+            //Debug.Log("Clic en: " + hit.gameObject.name); // Para ver si detecta algo
         }
 
         if (hit != null && hit.gameObject == gameObject)
         {
             isDragging = true;
-            Debug.Log("Arrastre iniciado en: " + gameObject.name);
+            //Debug.Log("Arrastre iniciado en: " + gameObject.name);
         }
     }
 

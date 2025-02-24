@@ -1,51 +1,53 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
+ï»¿using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.EventSystems;
 
 public class DraggableObject : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform objectTransform;  // Usamos Transform en vez de RectTransform
+    private Transform objectTransform;
     private Vector3 startPosition;
     private DropZone dropZone;
     private bool isDragging = false;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
     void Start()
     {
-        objectTransform = GetComponent<Transform>(); // Obtener el Transform
-        startPosition = objectTransform.position;  // Guardar la posición inicial
+        objectTransform = transform;
+        startPosition = objectTransform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!IsOwner) return; // Solo el dueño del objeto puede arrastrarlo
-
+        if (!IsOwner) return;
         isDragging = true;
+        ChangeTransparency(0.6f);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!IsOwner) return;
-
-        // Convertir la posición del mouse en posición del mundo 2D
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(eventData.position);
-        mousePosition.z = 0; // Mantener en el mismo plano 2D
+        mousePosition.z = 0;
         objectTransform.position = mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!IsOwner) return;
-
         isDragging = false;
+        ChangeTransparency(1f);
 
-        // Si se suelta dentro de una DropZone, lo coloca ahí; si no, vuelve a la posición inicial
-        if (dropZone != null)
+        if (IsServer)
         {
-            objectTransform.position = dropZone.transform.position;
+            CheckDropPositionServerRpc(objectTransform.position);
         }
         else
         {
-            objectTransform.position = startPosition;
+            CheckDropPositionServerRpc(objectTransform.position);
         }
     }
 
@@ -54,6 +56,7 @@ public class DraggableObject : NetworkBehaviour, IBeginDragHandler, IDragHandler
         if (collision.CompareTag("DropZone"))
         {
             dropZone = collision.GetComponent<DropZone>();
+            Debug.Log("Entra a DropZone: " + dropZone.name);
         }
     }
 
@@ -62,6 +65,75 @@ public class DraggableObject : NetworkBehaviour, IBeginDragHandler, IDragHandler
         if (collision.CompareTag("DropZone"))
         {
             dropZone = null;
+            Debug.Log("Sale de DropZone");
         }
+    }
+
+
+    private void ChangeTransparency(float alpha)
+    {
+        if (spriteRenderer != null)
+        {
+            Color newColor = spriteRenderer.color;
+            newColor.a = alpha;
+            spriteRenderer.color = newColor;
+        }
+    }
+
+    [ServerRpc]
+    public void CheckDropPositionServerRpc(Vector3 dropPosition)
+    {
+        bool isValid = false;
+
+        if (dropZone != null)
+        {
+            Collider2D dropCollider = dropZone.GetComponent<Collider2D>();
+
+            if (dropCollider != null && dropCollider.bounds.Contains(dropPosition))
+            {
+                dropPosition = dropCollider.bounds.center; // Centra el objeto en la zona
+                isValid = true;
+                Debug.Log(" Objeto soltado dentro de DropZone.");
+            }
+            else
+            {
+                Debug.Log("âš El objeto no estÃ¡ completamente dentro de la DropZone.");
+            }
+        }
+
+        if (!isValid)
+        {
+            dropPosition = startPosition;
+            ShowErrorEffectClientRpc();
+            Debug.Log("No es DropZone, regresando a la posiciÃ³n inicial.");
+        }
+
+        UpdatePositionClientRpc(dropPosition);
+    }
+
+
+
+
+    [ClientRpc]
+    private void UpdatePositionClientRpc(Vector3 newPosition)
+    {
+        Debug.Log("Actualizando posiciÃ³n a: " + newPosition);
+        objectTransform.position = newPosition;
+    }
+
+    [ClientRpc]
+    private void ShowErrorEffectClientRpc()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+            Invoke(nameof(ResetColor), 0.5f);
+        }
+    }
+
+    private void ResetColor()
+    {
+        if (spriteRenderer != null)
+            spriteRenderer.color = originalColor;
     }
 }
