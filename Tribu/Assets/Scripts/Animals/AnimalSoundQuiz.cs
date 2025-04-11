@@ -7,10 +7,12 @@ public class AnimalSoundQuiz : MonoBehaviour
 {
     public List<AnimalData> animals;
     public List<Button> animalButtons;
-    public AudioSource audioSource;
+    public AudioSource animalsAudioSource;
+    public AudioSource sfxAudioSource;
     public Button replaySoundButton;
 
     [SerializeField] private int _maximumRounds = 5;
+    [SerializeField] private AudioClip _correctAudio, _incorrectAudio;
 
     private int _currentRound = 0;
     private AnimalData _currentAnimalData;
@@ -44,8 +46,8 @@ public class AnimalSoundQuiz : MonoBehaviour
         _currentAnimalData = animals[_currentRound];
         _isCorrect = false;
 
-        audioSource.clip = _currentAnimalData.animalSound;
-        audioSource.Play();
+        animalsAudioSource.clip = _currentAnimalData.animalSound;
+        animalsAudioSource.Play();
         replaySoundButton.gameObject.SetActive(true);
 
         foreach (var button in animalButtons) 
@@ -58,6 +60,7 @@ public class AnimalSoundQuiz : MonoBehaviour
     {
         if (animalSelected == _currentAnimalData)
         {
+            sfxAudioSource.clip = _correctAudio;
             replaySoundButton.gameObject.SetActive(false);
             ShowDialogue("Narrador", "¡Correcto!");
             _isCorrect = true;
@@ -66,8 +69,10 @@ public class AnimalSoundQuiz : MonoBehaviour
         }
         else
         {
+            sfxAudioSource.clip = _incorrectAudio;
             ShowDialogue("Narrador", "Vuelve a intentarlo");
         }
+        sfxAudioSource.Play();
     }
 
     private void ShowDialogue(string narrator, string feedback)
@@ -77,12 +82,24 @@ public class AnimalSoundQuiz : MonoBehaviour
             name = narrator,
             sentences = new string[] { feedback }
         };
+
         _dialogueManager.StartDialogue(feedbackDialogue, null);
+
+        CancelInvoke(nameof(HideDialogue));
+        Invoke(nameof(HideDialogue), 2f);
     }
 
     private void ReplaySound()
     {
-        audioSource.Play();
+        animalsAudioSource.Play();
+    }
+
+    private void HideDialogue()
+    {
+        if (_dialogueManager.isDialogueActive)
+        {   
+            _dialogueManager.EndDialogue();
+        }
     }
 }
 
