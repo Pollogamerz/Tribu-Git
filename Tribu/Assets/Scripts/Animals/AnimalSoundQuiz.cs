@@ -1,18 +1,31 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AnimalSoundQuiz : MonoBehaviour
 {
+    [Header("Animals' components")]
     public List<AnimalData> animals;
     public List<Button> animalButtons;
+
+    [Header("UI Buttons")]
+    public Button startButton;
+    public Button replaySoundButton;
+    public Button playAgainButton;
+    public Button goToNextLevelButton;
+
+    [Header("Audio components")]
     public AudioSource animalsAudioSource;
     public AudioSource sfxAudioSource;
-    public Button replaySoundButton;
-
-    [SerializeField] private int _maximumRounds = 5;
     [SerializeField] private AudioClip _correctAudio, _incorrectAudio;
+
+    [Header("Rounds")]
+    [SerializeField] private int _maximumRounds = 5;
+
+    [Header("Next Level")]
+    [SerializeField] private string _nextSceneName;
 
     private int _currentRound = 0;
     private AnimalData _currentAnimalData;
@@ -22,17 +35,25 @@ public class AnimalSoundQuiz : MonoBehaviour
     private void Start()
     {
         _dialogueManager = FindObjectOfType<DialogueManager>();
-
+        startButton.onClick.AddListener(StartMiniGame);
         replaySoundButton.onClick.AddListener(ReplaySound);
         replaySoundButton.gameObject.SetActive(false);
+        playAgainButton.onClick.AddListener(PlayAgain);
+        playAgainButton.gameObject.SetActive(false);
+        goToNextLevelButton.onClick.AddListener(LoadNextScene);
+        goToNextLevelButton.gameObject.SetActive(false);
 
         for(int i = 0; i < animalButtons.Count; i++)
         {
             int index = i;
             animalButtons[i].onClick.AddListener(() => OnAnimalSelected(animals[index]));
-        }
+        }       
+    }
 
-        StartNextRound();
+    private void StartMiniGame()
+    {
+        startButton.gameObject.SetActive(false);
+        Invoke(nameof(StartNextRound), 2f);
     }
 
     private void StartNextRound()
@@ -40,6 +61,8 @@ public class AnimalSoundQuiz : MonoBehaviour
         if(_currentRound >= _maximumRounds)
         {
             ShowDialogue("Narrador", "¡Juego terminado!");
+            playAgainButton.gameObject.SetActive(true);
+            goToNextLevelButton.gameObject.SetActive(true);
             return;
         }
 
@@ -100,6 +123,19 @@ public class AnimalSoundQuiz : MonoBehaviour
         {   
             _dialogueManager.EndDialogue();
         }
+    }
+
+    private void PlayAgain()
+    {
+        _currentRound = 0; 
+        playAgainButton.gameObject.SetActive(false);
+        goToNextLevelButton.gameObject.SetActive(false);
+        Invoke(nameof(StartMiniGame), 2f);
+    }
+
+    private void LoadNextScene()
+    {
+        SceneManager.LoadScene(_nextSceneName);
     }
 }
 
