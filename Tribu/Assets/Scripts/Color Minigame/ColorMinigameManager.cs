@@ -8,15 +8,18 @@ public class ColorMinigameManager : MonoBehaviour
     public static ColorMinigameManager Instance;
 
     [Header("Fase del minijuego")]
-    [SerializeField] private GameObject _currentColorChoose;
-    [SerializeField] private GameObject _currentDrawToColor;
+    public Color32 _currentDrawToColor;
+    public Color32 _currentColorChoose;
     public Fase_Color _currentFaseColor = Fase_Color.Primer_Color;
-    public bool _isFaseCompleted = false;
+    private bool _isFaseCompleted = false;
+    private GameObject _currentDrawing;
+    private int _desafioIndex = 0;
 
     [Header("Configuracion de colores")]
     [SerializeField] private GameObject _cubetasPrefab;
     [SerializeField] private CubetaPropiedades[] _cubetaPropiedades;
     [SerializeField] private Transform[] _cubetasSpawners;
+    private List<GameObject> _colores = new List<GameObject>();
 
     [Header("Configuracion de Dibujos")]
     [SerializeField] private GameObject _dibujoPrefab;
@@ -36,16 +39,48 @@ public class ColorMinigameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            _currentFaseColor++;
-            _isFaseCompleted = true;
-        }
-
         if (_isFaseCompleted)
         {
             FaseSelection();
         }
+    }
+
+    public void CheckColors()
+    {
+        if (CompareColors(_currentColorChoose, _currentDrawToColor))
+        {
+            CorrectColor();
+        }
+        else
+        {
+            WrongColor();
+        }
+    }
+
+    private void CorrectColor()
+    {
+        if(_currentFaseColor != Fase_Color.Desafio_Color || _desafioIndex > 3)
+        {
+            _currentFaseColor++;
+            _isFaseCompleted = true;
+            Destroy(_currentDrawing);
+        }
+        else
+        {
+            Destroy(_currentDrawing);
+            _desafioIndex++;
+            SpawnDrawing(_dibujos[Random.Range(0, 2)], _dibujoSpawner[1]);
+        }
+
+        if (_currentFaseColor == Fase_Color.Fiesta_Color) {
+            FiestaColorFunction();
+        }
+
+    }
+
+    private void WrongColor()
+    {
+        Debug.Log("Color equivocado");
     }
 
     private void SetUpColors()
@@ -55,6 +90,7 @@ public class ColorMinigameManager : MonoBehaviour
         {
             var Bucket = Instantiate(_cubetasPrefab, _cubetasSpawners[i]);
             Bucket.GetComponent<Cubeta>().Initialize(data);
+            _colores.Add(Bucket);
             i++;
         }
     }
@@ -63,7 +99,7 @@ public class ColorMinigameManager : MonoBehaviour
     {
         var dibujo = Instantiate(_dibujoPrefab, position);
         dibujo.GetComponent<Dibujo>().Initialize(data);
-        _currentDrawToColor = dibujo;
+        _currentDrawing = dibujo;
     }
 
     private void FaseSelection()
@@ -94,6 +130,20 @@ public class ColorMinigameManager : MonoBehaviour
                 break;
         }
     }
+
+    public static bool CompareColors(Color32 a, Color32 b)
+    {
+        return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
+    }
+
+    private void FiestaColorFunction()
+    {
+        for (int i = 0; i < _cubetaPropiedades.Length; i++)
+        {
+            _colores[i].SetActive(false);
+        }
+    }
+
 }
 
 public enum Fase_Color

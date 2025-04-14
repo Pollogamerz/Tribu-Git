@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Cubeta : MonoBehaviour
 {
@@ -12,4 +13,5 @@ public class Cubeta : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = data.Sprite;
         _colorCubeta = data.Color;
     }
+
 }

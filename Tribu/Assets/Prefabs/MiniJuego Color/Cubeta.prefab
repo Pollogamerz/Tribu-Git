@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2614291210516538041}
   - component: {fileID: 2129504684907644801}
   - component: {fileID: 7570113586127393728}
+  - component: {fileID: 7207006036758738040}
   m_Layer: 0
   m_Name: Cubeta
   m_TagString: Cubeta
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -143,8 +144,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea5586876c32ee48bc0c479ba9a17b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubetaPropiedades: {fileID: 0}
   _colorCubeta:
     serializedVersion: 2
     rgba: 0
-  _spriteRenderer: {fileID: 0}
+--- !u!114 &7207006036758738040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272419584220896460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009d3e84b1ca0804fa524f8900990494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
