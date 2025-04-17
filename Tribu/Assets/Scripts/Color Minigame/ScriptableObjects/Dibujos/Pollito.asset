@@ -16,3 +16,4 @@ MonoBehaviour:
   Color:
     serializedVersion: 2
     rgba: 4278255615
+  Descripcion: "Este animal es amarillo, tiene un pico peque\xF1o y le gusta cantar."

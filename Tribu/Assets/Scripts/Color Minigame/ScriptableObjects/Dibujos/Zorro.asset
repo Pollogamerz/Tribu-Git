@@ -16,3 +16,4 @@ MonoBehaviour:
   Color:
     serializedVersion: 2
     rgba: 4278190335
+  Descripcion: Este animal es rojo, tiene una cola larga y le gusta saltar.

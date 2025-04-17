@@ -5,4 +5,5 @@ public class CubetaPropiedades : ScriptableObject
 {
     public Sprite Sprite;
     public Color32 Color;
+    [TextArea(2, 4)] public string Descripcion;
 }

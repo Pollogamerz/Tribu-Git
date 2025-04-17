@@ -16,3 +16,4 @@ MonoBehaviour:
   Color:
     serializedVersion: 2
     rgba: 4294901760
+  Descripcion: Este animal es azul y le gusta volar por el bosque.

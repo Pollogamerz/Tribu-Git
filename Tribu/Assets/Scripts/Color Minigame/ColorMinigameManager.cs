@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class ColorMinigameManager : MonoBehaviour
@@ -19,12 +19,20 @@ public class ColorMinigameManager : MonoBehaviour
     [SerializeField] private GameObject _cubetasPrefab;
     [SerializeField] private CubetaPropiedades[] _cubetaPropiedades;
     [SerializeField] private Transform[] _cubetasSpawners;
-    private List<GameObject> _colores = new List<GameObject>();
+    private readonly List<GameObject> _colores = new List<GameObject>();
 
     [Header("Configuracion de Dibujos")]
     [SerializeField] private GameObject _dibujoPrefab;
     [SerializeField] private List<CubetaPropiedades> _dibujos;
     [SerializeField] private Transform[] _dibujoSpawner;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip _correctAnswerSFX;
+    [SerializeField] private AudioClip _incorrectAnswerSFX;
+
+    [Header("Pista")]
+    [SerializeField] private GameObject _hintPanel;
+    [SerializeField] private TMP_Text _drawingHint;
 
     void Start()
     {
@@ -61,18 +69,21 @@ public class ColorMinigameManager : MonoBehaviour
     {
         if(_currentFaseColor != Fase_Color.Desafio_Color || _desafioIndex > 3)
         {
+            AudioManager.instance.PlaySFX(_correctAnswerSFX);
             _currentFaseColor++;
             _isFaseCompleted = true;
             Destroy(_currentDrawing);
         }
         else
         {
+            AudioManager.instance.PlaySFX(_correctAnswerSFX);
             Destroy(_currentDrawing);
             _desafioIndex++;
             SpawnDrawing(_dibujos[Random.Range(0, 2)], _dibujoSpawner[1]);
         }
 
         if (_currentFaseColor == Fase_Color.Fiesta_Color) {
+            AudioManager.instance.PlaySFX(_correctAnswerSFX);
             FiestaColorFunction();
         }
 
@@ -80,6 +91,7 @@ public class ColorMinigameManager : MonoBehaviour
 
     private void WrongColor()
     {
+        AudioManager.instance.PlaySFX(_incorrectAnswerSFX);
         Debug.Log("Color equivocado");
     }
 
@@ -100,6 +112,7 @@ public class ColorMinigameManager : MonoBehaviour
         var dibujo = Instantiate(_dibujoPrefab, position);
         dibujo.GetComponent<Dibujo>().Initialize(data);
         _currentDrawing = dibujo;
+        _drawingHint.text = data.Descripcion;
     }
 
     private void FaseSelection()
@@ -138,6 +151,7 @@ public class ColorMinigameManager : MonoBehaviour
 
     private void FiestaColorFunction()
     {
+        _hintPanel.SetActive(false);
         for (int i = 0; i < _cubetaPropiedades.Length; i++)
         {
             _colores[i].SetActive(false);
