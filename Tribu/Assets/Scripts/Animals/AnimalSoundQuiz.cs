@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -137,12 +136,4 @@ public class AnimalSoundQuiz : MonoBehaviour
     {
         SceneManager.LoadScene(_nextSceneName);
     }
-}
-
-[Serializable]
-public class AnimalData
-{
-    public string animalName;
-    public AudioClip animalSound;
-    public Sprite animalSprite;
 }
