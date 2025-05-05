@@ -8,7 +8,7 @@ public class DragAndDropFunction : MonoBehaviour
     private Vector3 offset;
     private bool isDragging;
     private Vector3 posicionInicial;
-    private bool sobreZonaValida = false;
+    private bool sobreZonaValida = false, mezclador = false;
 
     private void Start()
     {
@@ -22,6 +22,7 @@ public class DragAndDropFunction : MonoBehaviour
         isDragging = true;
 
         ColorMinigameManager.Instance._currentColorChoose = gameObject.GetComponent<Cubeta>()._colorCubeta;
+        ColorMinigameManager.Instance._bucket = this.gameObject;
     }
 
     private void OnMouseDrag()
@@ -46,6 +47,28 @@ public class DragAndDropFunction : MonoBehaviour
         {
             transform.position = posicionInicial;
         }
+
+        if (mezclador)
+        {
+            transform.position = posicionInicial;
+            if (Mezclador.Instance._firstColor == "")
+            {
+                Mezclador.Instance._firstColor = gameObject.GetComponent<Cubeta>()._nombreColor;
+            }
+            else
+            {
+                Mezclador.Instance._secondColor = gameObject.GetComponent<Cubeta>()._nombreColor;
+            }
+
+            if (Mezclador.Instance._firstColor != "" && Mezclador.Instance._secondColor != "")
+            {
+                Mezclador.Instance.SpawnNewColor();
+            }
+        }
+        else
+        {
+            transform.position = posicionInicial;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -54,6 +77,11 @@ public class DragAndDropFunction : MonoBehaviour
         {
             sobreZonaValida = true;
         }
+
+        if (other.CompareTag("Mezclador"))
+        {
+            mezclador = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -61,6 +89,11 @@ public class DragAndDropFunction : MonoBehaviour
         if (other.CompareTag("DropZone"))
         {
             sobreZonaValida = false;
+        }
+
+        if (other.CompareTag("Mezclador"))
+        {
+            mezclador = false;
         }
     }
 

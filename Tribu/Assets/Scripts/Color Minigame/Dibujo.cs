@@ -8,6 +8,6 @@ public class Dibujo : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = data.Color;
         GetComponent<SpriteRenderer>().sprite = data.Sprite;
-        ColorMinigameManager.Instance._currentDrawToColor = data.Color;
+        ColorMinigameManager.Instance._currentDrawingToColor = data.Color;
     }
 }

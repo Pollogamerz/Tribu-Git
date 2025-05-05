@@ -9,6 +9,7 @@ TagManager:
   - Draggable
   - DropZone
   - Cubeta
+  - Mezclador
   layers:
   - Default
   - TransparentFX

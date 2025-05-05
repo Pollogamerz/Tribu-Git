@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea8925f551df28b48822a199df69b040, type: 3}
-  m_Name: Morado
+  m_Name: Verde
   m_EditorClassIdentifier: 
-  NombreColor: Morado
+  NombreColor: Verde
   Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   Color:
     serializedVersion: 2
-    rgba: 4286578816
+    rgba: 4278255360
   Descripcion: 
+  IsCombined: 0

@@ -8,12 +8,13 @@ public class ColorMinigameManager : MonoBehaviour
     public static ColorMinigameManager Instance;
 
     [Header("Fase del minijuego")]
-    public Color32 _currentDrawToColor;
+    public Color32 _currentDrawingToColor;
     public Color32 _currentColorChoose;
     public Fase_Color _currentFaseColor = Fase_Color.Primer_Color;
+    public GameObject _bucket;
     private bool _isFaseCompleted = false;
     private GameObject _currentDrawing;
-    private int _desafioIndex = 0;
+    private int _desafioIndex = 0;    
 
     [Header("Configuracion de colores")]
     [SerializeField] private GameObject _cubetasPrefab;
@@ -55,7 +56,7 @@ public class ColorMinigameManager : MonoBehaviour
 
     public void CheckColors()
     {
-        if (CompareColors(_currentColorChoose, _currentDrawToColor))
+        if (CompareColors(_currentColorChoose, _currentDrawingToColor))
         {
             CorrectColor();
         }
@@ -69,6 +70,10 @@ public class ColorMinigameManager : MonoBehaviour
     {
         if(_currentFaseColor != Fase_Color.Desafio_Color || _desafioIndex > 3)
         {
+            if (_bucket.GetComponent<Cubeta>()._isCombined)
+            {
+                Destroy(_bucket);
+            }
             AudioManager.instance.PlaySFX(_correctAnswerSFX);
             _currentFaseColor++;
             _isFaseCompleted = true;
@@ -76,6 +81,10 @@ public class ColorMinigameManager : MonoBehaviour
         }
         else
         {
+            if (_bucket.GetComponent<Cubeta>()._isCombined)
+            {
+                Destroy(_bucket);
+            }
             AudioManager.instance.PlaySFX(_correctAnswerSFX);
             Destroy(_currentDrawing);
             _desafioIndex++;
@@ -91,6 +100,10 @@ public class ColorMinigameManager : MonoBehaviour
 
     private void WrongColor()
     {
+        if (_bucket.GetComponent<Cubeta>()._isCombined)
+        {
+            Destroy(_bucket);
+        }
         AudioManager.instance.PlaySFX(_incorrectAnswerSFX);
         Debug.Log("Color equivocado");
     }
@@ -157,6 +170,7 @@ public class ColorMinigameManager : MonoBehaviour
             _colores[i].SetActive(false);
         }
     }
+
 
 }
 
