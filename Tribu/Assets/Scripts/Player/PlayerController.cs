@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField] public float speed = 1f;
-    private Vector3 targetPosition; // Posición objetivo del jugador
-    private bool isMoving = false;  // Indica si el jugador está en movimiento
+    [SerializeField] private float runSpeedMultiplier = 2f;
+    private bool isRunning = false;
+
+    [Header("Componentes")]
     [SerializeField] public Animator animator;
     [SerializeField] public GameObject cameraPrefab;
-    [SerializeField] private NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private Rigidbody2D rb;
+    private PlayerInputActions playerInput;
 
+    [Header("Red")]
+    [SerializeField] private NetworkVariable<bool> isInputEnabled = new NetworkVariable<bool>(true, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<float> playerScaleX = new NetworkVariable<float>(1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<Vector2> movementInput = new NetworkVariable<Vector2>(writePerm: NetworkVariableWritePermission.Owner);
 
-    private PlayerInputActions playerInput; // Instancia del esquema de entradas
     private bool isMobilePlatform;
+    private Vector3 targetPosition;
+    private bool isMoving = false;
+    private Vector2 movementInputRaw;
 
     void Awake()
     {
-        // Inicializa el esquema de entrada
         playerInput = new PlayerInputActions();
-        playerInput.Enable(); // Activa las entradas
+        playerInput.Enable();
     }
 
     void Start()
@@ -29,22 +36,19 @@ public class PlayerController : NetworkBehaviour
         CheckPlatform();
 
         if (isMobilePlatform)
-        {
             targetPosition = transform.position;
-        }
 
         if (animator == null)
-        {
             animator = GetComponent<Animator>();
-        }
 
         if (cameraPrefab != null && Camera.main == null)
         {
-            GameObject cameraInstance = Instantiate(cameraPrefab);
-            cameraInstance.GetComponent<Camera>().transform.SetParent(transform);
-            cameraInstance.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
+            GameObject cam = Instantiate(cameraPrefab);
+            cam.transform.SetParent(transform);
+            cam.transform.localPosition = new Vector3(0, 0, -10);
         }
 
+        rb = GetComponent<Rigidbody2D>();
         playerScaleX.OnValueChanged += UpdatePlayerScale;
     }
 
@@ -54,68 +58,84 @@ public class PlayerController : NetworkBehaviour
 
         if (isMobilePlatform)
         {
-            HandleMobileTouch(); // Manejo de entrada táctil
+            HandleMobileTouch();
         }
         else
         {
-            HandlePCControls(); // Manejo de teclado para PC
+            HandleRunInput();
+            HandlePCControls();
         }
 
-        MoveTowardsTarget(); // Movimiento hacia el objetivo (aplica en móvil)
         UpdateServerMovement();
+        MoveTowardsTarget();
+
+        // Movimiento físico con rb
+        Vector2 move = movementInputRaw * speed * Time.deltaTime;
+        rb.MovePosition(rb.position + move);
     }
 
-    void CheckPlatform()
+    void HandleRunInput()
     {
-        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        if (playerInput.Player.Run.IsPressed())
         {
-            Debug.Log("Estás jugando en un navegador web.");
-        }
-        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            Debug.Log("Estás jugando en un dispositivo móvil.");
+            if (!isRunning)
+            {
+                speed *= runSpeedMultiplier;
+                isRunning = true;
+            }
         }
         else
         {
-            Debug.Log("Estás jugando en otra plataforma.");
+            if (isRunning)
+            {
+                speed /= runSpeedMultiplier;
+                isRunning = false;
+            }
         }
     }
 
     void HandlePCControls()
     {
-        // Obtiene el movimiento desde el sistema de entrada para PC
         Vector2 input = playerInput.Player.Move.ReadValue<Vector2>();
+        movementInputRaw = input;
         ApplyMovement(input);
+    }
+
+    void ApplyMovement(Vector2 input)
+    {
+        animator.SetFloat("Horizontal", input.x);
+        animator.SetFloat("Vertical", input.y);
+        animator.SetFloat("Speed", input.sqrMagnitude);
+
+        if (input.x < 0 && transform.localScale.x > 0)
+            playerScaleX.Value = -1;
+        else if (input.x > 0 && transform.localScale.x < 0)
+            playerScaleX.Value = 1;
     }
 
     void HandleMobileTouch()
     {
-        // Captura la posición del toque
-        Vector2 touchPosition = playerInput.Mobile.Move.ReadValue<Vector2>();
+        Vector2 touchPos = playerInput.Mobile.Move.ReadValue<Vector2>();
 
-        if (playerInput.Mobile.TouchPress.ReadValue<float>() > 0) // Verifica si se presionó la pantalla
+        if (playerInput.Mobile.TouchPress.ReadValue<float>() > 0)
         {
-            // Convierte las coordenadas de la pantalla a coordenadas del mundo
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
-            targetPosition = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
-            isMoving = true; // Marca que el jugador está en movimiento
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, Camera.main.nearClipPlane));
+            targetPosition = new Vector3(worldPos.x, worldPos.y, transform.position.z);
+            isMoving = true;
         }
     }
 
     void MoveTowardsTarget()
     {
-        if (isMoving)
+        if (isMobilePlatform && isMoving)
         {
-            // Mueve al jugador hacia el objetivo
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            Vector3 dir = targetPosition - transform.position;
 
-            // Calcula la dirección y actualiza las animaciones
-            Vector3 direction = targetPosition - transform.position;
-            animator.SetFloat("Horizontal", direction.x);
-            animator.SetFloat("Vertical", direction.y);
-            animator.SetFloat("Speed", direction.sqrMagnitude);
+            animator.SetFloat("Horizontal", dir.x);
+            animator.SetFloat("Vertical", dir.y);
+            animator.SetFloat("Speed", dir.sqrMagnitude);
 
-            // Detiene el movimiento cuando alcanza el objetivo
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
                 isMoving = false;
@@ -124,28 +144,8 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    void ApplyMovement(Vector2 input)
-    {
-        Vector3 movement = new Vector3(input.x, input.y, 0f);
-
-        transform.position += movement * speed * Time.deltaTime;
-        animator.SetFloat("Horizontal", input.x);
-        animator.SetFloat("Vertical", input.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        if (input.x < 0 && transform.localScale.x > 0)
-        {
-            playerScaleX.Value = -1;
-        }
-        else if (input.x > 0 && transform.localScale.x < 0)
-        {
-            playerScaleX.Value = 1;
-        }
-    }
-
     void UpdateServerMovement()
     {
-        // Actualiza la variable de red con el movimiento del cliente
         movementInput.Value = isMobilePlatform
             ? playerInput.Mobile.Move.ReadValue<Vector2>()
             : playerInput.Player.Move.ReadValue<Vector2>();
@@ -159,5 +159,15 @@ public class PlayerController : NetworkBehaviour
     public void SetInputEnabled(bool enabled)
     {
         isInputEnabled.Value = enabled;
+    }
+
+    void CheckPlatform()
+    {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+            Debug.Log("Estás jugando en un navegador web.");
+        else if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            Debug.Log("Estás jugando en un dispositivo móvil.");
+        else
+            Debug.Log("Estás jugando en otra plataforma.");
     }
 }
