@@ -24,6 +24,14 @@ public class PlayerController : NetworkBehaviour
     private Vector3 targetPosition;
     private bool isMoving = false;
     private Vector2 movementInputRaw;
+    [SerializeField] private Transform visualTransform;
+
+    [SerializeField] private Transform carryPoint;
+    [SerializeField] private float pickupRange = 1f;
+
+    private BoxPickup carriedBox = null;
+
+
 
     void Awake()
     {
@@ -69,10 +77,44 @@ public class PlayerController : NetworkBehaviour
         UpdateServerMovement();
         MoveTowardsTarget();
 
-        // Movimiento físico con rb
         Vector2 move = movementInputRaw * speed * Time.deltaTime;
         rb.MovePosition(rb.position + move);
+        HandleBoxInteraction();
     }
+
+    void HandleBoxInteraction()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (carriedBox != null)
+            {
+                // Soltar caja
+                carriedBox.Drop();
+                carriedBox = null;
+                animator.SetBool("Carrying", false);
+            }
+            else
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pickupRange);
+                foreach (var col in colliders)
+                {
+                    if (col.CompareTag("Box"))
+                    {
+                        BoxPickup box = col.GetComponent<BoxPickup>();
+                        if (box != null && !box.IsHeld())
+                        {
+                            carriedBox = box;
+                            carriedBox.PickUp(carryPoint);
+                            animator.SetBool("Carrying", true);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
 
     void HandleRunInput()
     {

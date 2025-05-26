@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Draggable
   - DropZone
+  - Box
   layers:
   - Default
   - TransparentFX
