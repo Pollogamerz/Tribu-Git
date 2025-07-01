@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b30df02c43e83f4bad8ed75ab7b4bf5, type: 3}
+  m_Name: Pez
+  m_EditorClassIdentifier: 
+  animalName: pez
+  animalSound: {fileID: 0}
+  animalSprite: {fileID: -36770566, guid: efdf8f835f997ce4d95d874e74eef485, type: 3}
+  animalCharacteristic: 
+  animalDescription: "Este animal tiene un cuerpo largo, nadando de manera fluida
+    y tiene muchas aletas peque\xF1as."
+  animalCharacteristicSprite: {fileID: 0}
+  animalIncompleteSprite: {fileID: 0}
+  animalIdleAnimator: {fileID: 0}

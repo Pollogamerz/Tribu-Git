@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b30df02c43e83f4bad8ed75ab7b4bf5, type: 3}
+  m_Name: Ballena
+  m_EditorClassIdentifier: 
+  animalName: ballena
+  animalSound: {fileID: 0}
+  animalSprite: {fileID: 21300000, guid: c072585a41b1af2429e9443389534a04, type: 3}
+  animalCharacteristic: 
+  animalDescription: "Este animal es muy grande, tiene un cuerpo enorme y le gusta
+    nadar por el oc\xE9ano."
+  animalCharacteristicSprite: {fileID: 0}
+  animalIncompleteSprite: {fileID: 0}
+  animalIdleAnimator: {fileID: 0}

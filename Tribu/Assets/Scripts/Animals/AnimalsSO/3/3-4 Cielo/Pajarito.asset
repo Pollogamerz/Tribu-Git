@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b30df02c43e83f4bad8ed75ab7b4bf5, type: 3}
+  m_Name: Pajarito
+  m_EditorClassIdentifier: 
+  animalName: pajarito
+  animalSound: {fileID: 0}
+  animalSprite: {fileID: 21300000, guid: a92a4d751a7312340b872feea5be72fb, type: 3}
+  animalCharacteristic: 
+  animalDescription: "Este animal es muy peque\xF1o, tiene un pico corto y se mueve
+    r\xE1pidamente."
+  animalCharacteristicSprite: {fileID: 0}
+  animalIncompleteSprite: {fileID: 0}
+  animalIdleAnimator: {fileID: 0}
