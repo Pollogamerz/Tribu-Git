@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimalSoundMatch : MonoBehaviour
+public class AnimalSoundMatch : MonoBehaviour, IStartable, IMinigameIndex
 {
-    public List<AnimalData> animals;
+    public List<AnimalDataSO> animals;
     [SerializeField] private int _maximumRounds = 3;
 
     [Header("Introduction dialogue")]
@@ -26,22 +26,32 @@ public class AnimalSoundMatch : MonoBehaviour
     [SerializeField] private AudioClip _correctAudio, _incorrectAudio;
 
     private int _currentRound = 0;
-    private DialogueManager _dialogueManager;
-    private AnimalData _currentAnimalData;
+    public DialogueManager _dialogueManager;
+    private AnimalDataSO _currentAnimalData;
     private AudioClip _leftClip;
     private AudioClip _rightClip;
     private bool _isCorrectSound;
     private bool _waitingForInput = false;
 
+    public event System.Action OnMiniGameFinished;
+
     private void Start()
     {
-        _dialogueManager = FindObjectOfType<DialogueManager>();
         leftSoundButton.onClick.AddListener(() => PlaySound(_leftClip));
         rightSoundButton.onClick.AddListener(() => PlaySound(_rightClip));
         leftAnswerButton.onClick.AddListener(() => OnAnswerSelected(_isCorrectSound));
         rightAnswerButton.onClick.AddListener(() => OnAnswerSelected(!_isCorrectSound));
         nextDialogueLineButton.onClick.AddListener(OnNextDialogueLineInput);
+    }
 
+    public void StartMiniGame()
+    {
+        animalsAudioSource.Stop();
+        sfxAudioSource.Stop();
+        CancelInvoke();
+        animalsAudioSource.clip = null;
+        sfxAudioSource.clip = null;
+        _currentRound = 0;
         StartCoroutine(ShowIntroductionDialogue());
     }
 
@@ -100,8 +110,11 @@ public class AnimalSoundMatch : MonoBehaviour
         if (_currentRound >= _maximumRounds)
         {
             ShowDialogue("Narrador", "¡Juego terminado!");
+            Invoke(nameof(FinishMiniGame), 2f);
             return;
         }
+
+        SetButtonsInteractable(true);
 
         _currentAnimalData = animals[_currentRound];
         animalSprite.sprite = _currentAnimalData.animalSprite;
@@ -136,6 +149,7 @@ public class AnimalSoundMatch : MonoBehaviour
             sfxAudioSource.clip = _correctAudio;
             ShowDialogue("Narrator", $"Correcto! Es un {_currentAnimalData.animalName}");
             _currentRound++;
+            SetButtonsInteractable(false);
             Invoke(nameof(StartNextRound), 2f);
         }
         else
@@ -168,4 +182,11 @@ public class AnimalSoundMatch : MonoBehaviour
             _dialogueManager.EndDialogue();
         }
     }
+
+    public void FinishMiniGame()
+    {
+        OnMiniGameFinished?.Invoke();
+    }
+
+    public void SetupMinigame(int minigameIndex) { }
 }

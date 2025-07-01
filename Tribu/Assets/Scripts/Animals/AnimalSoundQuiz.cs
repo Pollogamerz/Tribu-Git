@@ -1,68 +1,79 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AnimalSoundQuiz : MonoBehaviour
+public class AnimalSoundQuiz : MonoBehaviour, IStartable, IMinigameIndex
 {
     [Header("Animals' components")]
-    public List<AnimalData> animals;
+    public List<AnimalDataSO> animals;
     public List<Button> animalButtons;
 
     [Header("UI Buttons")]
-    public Button startButton;
     public Button replaySoundButton;
-    public Button playAgainButton;
-    public Button goToNextLevelButton;
+    public Image dialogueESprite;
+    public Button dialogueInputButton;
 
     [Header("Audio components")]
     public AudioSource animalsAudioSource;
     public AudioSource sfxAudioSource;
     [SerializeField] private AudioClip _correctAudio, _incorrectAudio;
 
-    [Header("Rounds")]
-    [SerializeField] private int _maximumRounds = 5;
-
     [Header("Next Level")]
     [SerializeField] private string _nextSceneName;
 
+    public DialogueManager dialogueManager;
+    
     private int _currentRound = 0;
-    private AnimalData _currentAnimalData;
-    private DialogueManager _dialogueManager;
+    private AnimalDataSO _currentAnimalData;
     private bool _isCorrect = false;
+
+    private int _minigameIndex;
+    private bool _isRandomized => _minigameIndex > 0;
+
+    public event Action OnMiniGameFinished;
 
     private void Start()
     {
-        _dialogueManager = FindObjectOfType<DialogueManager>();
-        startButton.onClick.AddListener(StartMiniGame);
         replaySoundButton.onClick.AddListener(ReplaySound);
         replaySoundButton.gameObject.SetActive(false);
-        playAgainButton.onClick.AddListener(PlayAgain);
-        playAgainButton.gameObject.SetActive(false);
-        goToNextLevelButton.onClick.AddListener(LoadNextScene);
-        goToNextLevelButton.gameObject.SetActive(false);
+        dialogueESprite.gameObject.SetActive(false);
+        dialogueInputButton.interactable = false;
 
-        for(int i = 0; i < animalButtons.Count; i++)
+        for (int i = 0; i < animalButtons.Count; i++)
         {
+            Image buttonImage = animalButtons[i].GetComponent<Image>();
+            buttonImage.sprite = animals[i].animalSprite;
             int index = i;
             animalButtons[i].onClick.AddListener(() => OnAnimalSelected(animals[index]));
         }       
     }
 
-    private void StartMiniGame()
+    public void StartMiniGame()
     {
-        startButton.gameObject.SetActive(false);
+        animalsAudioSource.Stop();
+        sfxAudioSource.Stop();
+        CancelInvoke();
+        animalsAudioSource.clip = null;
+        sfxAudioSource.clip = null;
+        _currentRound = 0;
         Invoke(nameof(StartNextRound), 2f);
     }
 
     private void StartNextRound()
     {
-        if(_currentRound >= _maximumRounds)
+        if (_currentRound >= animals.Count)
         {
             ShowDialogue("Narrador", "¡Juego terminado!");
-            playAgainButton.gameObject.SetActive(true);
-            goToNextLevelButton.gameObject.SetActive(true);
+            Invoke(nameof(FinishMiniGame), 2f);
             return;
+        }
+
+        if (_isRandomized)
+        {
+            ShuffleList(animals);
+            ShuffleList(animalButtons);
         }
 
         _currentAnimalData = animals[_currentRound];
@@ -72,19 +83,24 @@ public class AnimalSoundQuiz : MonoBehaviour
         animalsAudioSource.Play();
         replaySoundButton.gameObject.SetActive(true);
 
-        foreach (var button in animalButtons) 
+        for (int i = 0; i < animalButtons.Count; i++)
         {
-            button.interactable = true;
+            Image buttonImage = animalButtons[i].GetComponent<Image>();
+            buttonImage.sprite = animals[i].animalSprite;
+            int index = i;
+            animalButtons[i].onClick.RemoveAllListeners();
+            animalButtons[i].onClick.AddListener(() => OnAnimalSelected(animals[index]));
+            animalButtons[i].interactable = true;
         }
     }
 
-    private void OnAnimalSelected(AnimalData animalSelected)
+    private void OnAnimalSelected(AnimalDataSO animalSelected)
     {
-        if (animalSelected == _currentAnimalData)
+        if (animalSelected == _currentAnimalData && _isCorrect != true)
         {
             sfxAudioSource.clip = _correctAudio;
             replaySoundButton.gameObject.SetActive(false);
-            ShowDialogue("Narrador", "¡Correcto!");
+            ShowDialogue("Narrador", $"¡Correcto! Es el sonido del {_currentAnimalData.animalName}");
             _isCorrect = true;
             _currentRound++;
             Invoke(nameof(StartNextRound), 2f);
@@ -105,7 +121,7 @@ public class AnimalSoundQuiz : MonoBehaviour
             sentences = new string[] { feedback }
         };
 
-        _dialogueManager.StartDialogue(feedbackDialogue, null);
+        dialogueManager.StartDialogue(feedbackDialogue, null);
 
         CancelInvoke(nameof(HideDialogue));
         Invoke(nameof(HideDialogue), 2f);
@@ -118,22 +134,30 @@ public class AnimalSoundQuiz : MonoBehaviour
 
     private void HideDialogue()
     {
-        if (_dialogueManager.isDialogueActive)
+        if (dialogueManager.isDialogueActive)
         {   
-            _dialogueManager.EndDialogue();
+            dialogueManager.EndDialogue();
         }
     }
 
-    private void PlayAgain()
+    public void FinishMiniGame()
     {
-        _currentRound = 0; 
-        playAgainButton.gameObject.SetActive(false);
-        goToNextLevelButton.gameObject.SetActive(false);
-        Invoke(nameof(StartMiniGame), 2f);
+        OnMiniGameFinished?.Invoke();
     }
 
-    private void LoadNextScene()
+    public void SetupMinigame(int minigameIndex)
     {
-        SceneManager.LoadScene(_nextSceneName);
+        _minigameIndex = minigameIndex;
+    }
+
+    private void ShuffleList<T>(List<T> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            T temp = list[i];
+            int randomIndex = UnityEngine.Random.Range(i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
     }
 }
